@@ -14,7 +14,8 @@ class DashboardController extends Controller
        {
            return view('home.pages.index');
        }
-       elseif (Auth::user()->hasRole('admin')) {
+       elseif (Auth::user()->hasRole('admin'))
+       {
            return view('admin.dashboard.index');
        }
     }

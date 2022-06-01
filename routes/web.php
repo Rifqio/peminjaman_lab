@@ -28,7 +28,8 @@ Route::controller(DashboardController::class)->middleware(['auth'])->group(funct
 // Route Admin
 Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('daftar-peminjam', 'daftar_peminjam');
-    Route::post('daftar-peminjam', 'approve');
+    Route::put('daftar-peminjam/update', 'approve');
+    Route::put('daftar-peminjam/tolak', 'disapprove');
 });
 
 // Untuk Peminjaman

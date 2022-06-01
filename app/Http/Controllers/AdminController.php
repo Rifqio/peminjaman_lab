@@ -27,8 +27,18 @@ class AdminController extends Controller
         );
     }
 
-    public function approve()
+    public function approve(Request $request)
     {
-        dd(request());
+        Peminjaman::where('id', $request->id)->update(['status_id' => 2]);
+        return redirect('/dashboard');
     }
+
+    public function disapprove(Request $request)
+    {
+        Peminjaman::where('id', $request->id)->update(['status_id' => 3]);
+        return redirect('/dashboard');
+    }
+
+
+
 }

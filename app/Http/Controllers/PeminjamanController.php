@@ -49,7 +49,7 @@ class PeminjamanController extends Controller
         $tanggal_akhir = Carbon::parse($request->tanggal_awal_peminjaman)->toDateTimeString();
 
 
-        // if ($request->name !== Auth::user()->name && Auth::user()->email) {
+        // if (request('name') !== Auth::user()->name && Auth::user()->email) {
         //     return redirect('/peminjaman/create')->with('warning', 'Email atau nama tidak sama');
         // }
 
@@ -63,4 +63,6 @@ class PeminjamanController extends Controller
         ]);
         return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek email berkala untuk menunggu verifikasi');
     }
+
+
 }

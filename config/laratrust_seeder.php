@@ -19,8 +19,16 @@ return [
         ],
         'student' => [
             'profile' => 'r,u',
-            'room' => 'c,r,u,d'
-        ]
+            'peminjaman' => 'c,r,u,d'
+        ],
+        'petugas' => [
+            'profile' => 'c,r,u',
+            'peminjaman' => 'r,u,d'
+        ],
+        'dosen' => [
+            'profile' => 'c,r,u',
+            'peminjaman' => 'r,u,d'
+        ],
     ],
 
     'permissions_map' => [

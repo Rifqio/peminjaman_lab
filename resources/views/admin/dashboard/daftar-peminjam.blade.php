@@ -104,11 +104,12 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="" data-bs-dismiss="modal">Close</button>
-                            <form action="{{ url('daftar-peminjam') }}" method="POST">
+                            <form action="{{ url('daftar-peminjam/update') }}" method="POST">
                                 @csrf
+                                @method('put')
                                 <input type="hidden" name="status_id" value="2">
-                                <button type="submit" class=""><a
-                                        href="/daftar-peminjam/{{ $data->id }}">Save changes</button>
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <button type="submit" class="">Save changes</button>
                             </form>
                         </div>
                     </div>
@@ -130,10 +131,12 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="" data-bs-dismiss="modal">Close</button>
-                            <form action="{{ url('daftar-peminjam') }}" method="POST">
+                            <form action="{{ url('daftar-peminjam/tolak') }}" method="POST">
+                                @csrf
+                                @method('put')
                                 <input type="hidden" name="status_id" value="3">
-                                <button type="submit" class=""><a
-                                        href="/daftar-peminjam/{{ $data->id }}">Save changes</button>
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <button type="submit">Save changes</button>
                         </div>
                     </div>
                 </div>
