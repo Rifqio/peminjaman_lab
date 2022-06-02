@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +21,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::controller(DashboardController::class)->middleware(['auth'])->group(function () {
+    Route::get('dashboard', 'index')->name('dashboard');
+});
 
-require __DIR__.'/auth.php';
+// Route Admin
+Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('daftar-peminjam', 'daftar_peminjam');
+    Route::put('daftar-peminjam/update', 'approve');
+    Route::put('daftar-peminjam/tolak', 'disapprove');
+});
+
+// Untuk Peminjaman
+Route::controller(PeminjamanController::class)->middleware(['auth', 'role:student'])->group(function () {
+    Route::get('peminjaman', 'index');
+    Route::get('peminjaman/create', 'create');
+    Route::post('peminjaman', 'store');
+    Route::get('peminjaman/status', 'status_peminjaman');
+});
+
+
+require __DIR__ . '/auth.php';

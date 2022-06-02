@@ -14,6 +14,11 @@ class User extends Authenticatable
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
