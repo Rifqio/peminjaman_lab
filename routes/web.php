@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeminjamanController;
 
@@ -25,6 +26,11 @@ Route::controller(DashboardController::class)->middleware(['auth'])->group(funct
     Route::get('dashboard', 'index')->name('dashboard');
 });
 
+//Route Profile
+Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
+    Route::get('profile', 'index')->name('profile');
+});
+
 // Route Admin
 Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('daftar-peminjam', 'daftar_peminjam');
@@ -32,7 +38,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     Route::put('daftar-peminjam/tolak', 'disapprove');
 });
 
-// Untuk Peminjaman
+//Route Peminjaman
 Route::controller(PeminjamanController::class)->middleware(['auth', 'role:student'])->group(function () {
     Route::get('peminjaman', 'index');
     Route::get('peminjaman/create', 'create');

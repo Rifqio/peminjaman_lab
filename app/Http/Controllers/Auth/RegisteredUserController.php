@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mahasiswa;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -35,16 +36,21 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' =>  'required|email|max:255|unique:users|regex:/^[A-Za-z0-9\.]*@(mipa)[.](uns)[.](ac)[.](id)$/',
+            'email' =>  'required|email|max:255|unique:users|regex:/^[A-Za-z0-9\.]*@(student)[.](uns)[.](ac)[.](id)$/',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => 'required'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
         ]);
         $user->attachRole('student');
+        Mahasiswa::create([
+            'user_id' => $user->id,
+        ]);
 
         event(new Registered($user));
 

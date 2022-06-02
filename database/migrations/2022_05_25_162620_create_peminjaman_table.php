@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('room_id')->constrained('rooms');
-            $table->dateTime('tanggal_awal_peminjaman');
-            $table->dateTime('tanggal_akhir_peminjaman');
+            $table->date('tanggal_awal_peminjaman');
+            $table->date('tanggal_akhir_peminjaman');
             $table->string('keterangan');
             $table->foreignId('status_id')->constrained('status_aktivasi');
             $table->timestamps();
