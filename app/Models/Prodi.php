@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Prodi extends Model
 {
     public $guarded = ['id'];
-
+   
     protected $table = 'prodi';
 }

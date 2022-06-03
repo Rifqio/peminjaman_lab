@@ -7,14 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peminjaman extends Model
 {
-    protected $fillable = [
-        'user_id',
-        'ruang_lab_id',
-        'tanggal_awal_peminjaman',
-        'tanggal_akhir_peminjaman',
-        'status_id',
-        'keterangan'
-    ];
+    protected $guarded = ['id'];
     public function room()
     {
         return $this->belongsTo(Room::class, 'ruang_lab_id');

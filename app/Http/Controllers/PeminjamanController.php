@@ -41,9 +41,20 @@ class PeminjamanController extends Controller
 
     public function create()
     {
+        $prodi =
+        DB::table("users")
+        ->join("user_mahasiswa", function($join){
+            $join->on("users.id", "=", "user_mahasiswa.user_id");
+        })
+        ->join("prodi", function($join){
+            $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
+        })
+        ->where("users.id", "=", Auth::id())
+        ->get();
         $ruangan = Room::all();
         return view('peminjaman.form.create.index', [
             'ruangan' => $ruangan,
+            'prodi' => $prodi
         ]);
     }
 
@@ -57,6 +68,10 @@ class PeminjamanController extends Controller
             'ruang_lab_id' => request('ruang_lab_id'),
             'user_id' => Auth::id(),
             'keterangan' => request('keterangan'),
+            'judul_penelitian' => request('judul_penelitian'),
+            'sumber_dana' => request('sumber_dana'),
+            'pembimbing' => request('pembimbing'),
+            'no_surat' => request('no_surat'),
             'tanggal_awal_peminjaman' => request('tanggal_awal_peminjaman'),
             'tanggal_akhir_peminjaman' => request('tanggal_akhir_peminjaman'),
             'status_id' => 1

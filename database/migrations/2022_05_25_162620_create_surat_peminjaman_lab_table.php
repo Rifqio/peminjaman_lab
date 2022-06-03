@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('surat_peminjaman_lab', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('no_surat');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('ruang_lab_id')->constrained('ruang_lab');
             $table->text('judul_penelitian');

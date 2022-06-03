@@ -16,4 +16,5 @@
   - Memperbaiki fitur update profile mahasiswa di __ProfileController__
 #### Rio
   - Restrukturisasi database
+  - Memperbaiki Frontend dan menambah nomor surat
 
