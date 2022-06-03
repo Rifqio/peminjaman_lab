@@ -23,6 +23,7 @@ class PeminjamanController extends Controller
 
     public function status_peminjaman()
     {
+        $peminjaman = Peminjaman::where('id', Auth::id());
         $tanggal_awal = "surat_peminjaman_lab.tanggal_awal_peminjaman";
         $data =
             DB::table("surat_peminjaman_lab")
@@ -36,7 +37,10 @@ class PeminjamanController extends Controller
             ->where("surat_peminjaman_lab.user_id", "=", auth()->user()->id)
             ->get();
 
-        return view('peminjaman.form.status.index', ['data' => $data]);
+        return view('peminjaman.form.status.index', [
+            'data' => $data,
+            'peminjaman' => $peminjaman,
+        ]);
     }
 
     public function create()
@@ -71,12 +75,12 @@ class PeminjamanController extends Controller
             'judul_penelitian' => request('judul_penelitian'),
             'sumber_dana' => request('sumber_dana'),
             'pembimbing' => request('pembimbing'),
-            'no_surat' => request('no_surat'),
+            'no_surat' => str_replace('-','',Carbon::now()->toDateString()).rand(1,100),
             'tanggal_awal_peminjaman' => request('tanggal_awal_peminjaman'),
             'tanggal_akhir_peminjaman' => request('tanggal_akhir_peminjaman'),
             'status_id' => 1
         ]);
-        return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek email berkala untuk menunggu verifikasi');
+        return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek status form di menu status');
     }
 
 }
