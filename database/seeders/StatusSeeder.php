@@ -32,7 +32,7 @@ class StatusSeeder extends Seeder
 
         DB::table('status_aktivasi')->insert([
             'id' => 4,
-            'status' => 'Terverifikasi Petugas'
+            'status' => 'Terverifikasi Admin'
         ]);
     }
 }
