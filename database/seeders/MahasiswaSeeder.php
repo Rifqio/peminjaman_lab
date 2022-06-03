@@ -21,6 +21,7 @@ class MahasiswaSeeder extends Seeder
             'user_id' => 1,
             'prodi_id' => 1,
             'nim' => 'M0418054',
+            'phone' => '087772151880',
             'angkatan' => '2018',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

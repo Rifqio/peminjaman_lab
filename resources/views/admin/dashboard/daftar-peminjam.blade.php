@@ -62,24 +62,6 @@
                                     data-bs-target="#disapprovedModal">
                                     Disapproved
                                 </button>
-
-                                {{-- <button onclick="dropdownFunction(this)"
-                                class="w-5 focus:ring-2 rounded-md focus:outline-none ml-7" role="button"
-                                aria-label="options">
-                                <img class="w-5"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/table_3-svg1.svg" alt="dropdown">
-                            </button>
-                            <div
-                                class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6 hidden">
-                                <div tabindex="0"
-                                    class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                                    <p>Approve</p>
-                                </div>
-                                <div tabindex="0"
-                                    class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                                    <p>Tolak</p>
-                                </div>
-                            </div> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -107,8 +89,8 @@
                             <form action="{{ url('daftar-peminjam/update') }}" method="POST">
                                 @csrf
                                 @method('put')
-                                <input type="hidden" name="status_id" value="2">
-                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" name="status_id" value="{{ Crypt::encrypt(2) }}">
+                                <input type="hidden" name="id" value="{{ Crypt::encrypt($data->id) }}">
                                 <button type="submit" class="">Save changes</button>
                             </form>
                         </div>
@@ -134,8 +116,8 @@
                             <form action="{{ url('daftar-peminjam/tolak') }}" method="POST">
                                 @csrf
                                 @method('put')
-                                <input type="hidden" name="status_id" value="3">
-                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" name="status_id" value="{{ Crypt::encrypt(3) }}">
+                                <input type="hidden" name="id" value="{{ Crypt::encrypt($data->id) }}">
                                 <button type="submit">Save changes</button>
                         </div>
                     </div>
@@ -144,18 +126,4 @@
 
         </div>
     </div>
-    <script>
-        function dropdownFunction(element) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            let list = element.parentElement.parentElement.getElementsByClassName("dropdown-content")[0];
-            list.classList.add("target");
-            for (i = 0; i < dropdowns.length; i++) {
-                if (!dropdowns[i].classList.contains("target")) {
-                    dropdowns[i].classList.add("hidden");
-                }
-            }
-            list.classList.toggle("hidden");
-        }
-    </script>
 @endsection

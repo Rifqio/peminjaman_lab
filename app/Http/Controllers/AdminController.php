@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
     public function daftar_peminjam()
     {
-        $peminjam = DB::table("peminjaman")
+        $peminjam = DB::table("surat_peminjaman_lab")
             ->join("users", function ($join) {
-                $join->on("peminjaman.user_id", "=", "users.id");
+                $join->on("surat_peminjaman_lab.user_id", "=", "users.id");
             })
-            ->join("rooms", function ($join) {
-                $join->on("peminjaman.room_id", "=", "rooms.id");
+            ->join("ruang_lab", function ($join) {
+                $join->on("surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id");
             })
-            ->select("rooms.nama_ruang", "peminjaman.keterangan", "peminjaman.tanggal_awal_peminjaman", "users.name", "users.email", "peminjaman.id")
+            ->select("ruang_lab.nama_ruang", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.tanggal_awal_peminjaman", "users.name", "users.email", "surat_peminjaman_lab.id")
             ->get();
         return view(
             'admin.dashboard.daftar-peminjam',
@@ -29,13 +30,17 @@ class AdminController extends Controller
 
     public function approve(Request $request)
     {
-        Peminjaman::where('id', $request->id)->update(['status_id' => 2]);
+        $approve =  Crypt::decrypt($request->status_id);
+        $data =  Crypt::decrypt($request->id);
+        Peminjaman::where('id', $data)->update(['status_id' => $approve]);
         return redirect('/dashboard');
     }
 
     public function disapprove(Request $request)
     {
-        Peminjaman::where('id', $request->id)->update(['status_id' => 3]);
+        $approve =  Crypt::decrypt($request->status_id);
+        $data =  Crypt::decrypt($request->id);
+        Peminjaman::where('id', $data)->update(['status_id' => $approve]);
         return redirect('/dashboard');
     }
 

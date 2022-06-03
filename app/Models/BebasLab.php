@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Prodi extends Model
+class BebasLab extends Model
 {
-    public $guarded = ['id'];
-   
-    protected $table = 'prodi';
+    protected $guarded = ['id'];
+
+    protected $table = 'surat_permohonan_bebas_lab';
 }

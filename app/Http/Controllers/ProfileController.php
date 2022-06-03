@@ -24,25 +24,37 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'nim' => 'required|max:8',
-            'phone' => 'required|max:12|integer',
-            'prodi' => 'required',
-            'angkatan' => 'required|max:4|integer'
+            'prodi_id' => 'required',
+            'angkatan' => 'required|max:4|min:4',
+            'phone' => 'required|max:12',
         ]);
 
-        Mahasiswa::where('id', '=', $request->user_id)->update([
-            'name' => $request->name,
+        // dd($request);
+
+        $phone = $request->phone;
+        $intPhone = (int)$phone;
+        $angkatan = $request->angkatan;
+        $intAngkatan = (int)$angkatan;
+
+        Mahasiswa::where('user_id', auth()->user()->id)->update([
             'nim' => $request->nim,
-            'prodi' => $request->prodi,
-            'angkatan' => $request->angkatan
+            'prodi_id' => $request->prodi_id,
+            'angkatan' => $intAngkatan,
+            'phone' => $intPhone,
         ]);
 
-        User::where('id' , '=', $request->user_id)->update([
-            'phone' => $request->phone
+        User::where('id', auth()->user()->id)->update([
+            'name' => $request->name,
         ]);
 
         return redirect('/dashboard');
+
+
     }
+
+
 }

@@ -29,7 +29,7 @@ Route::controller(DashboardController::class)->middleware(['auth'])->group(funct
 //Route Profile
 Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
     Route::get('profile', 'index')->name('profile');
-    Route::put('profile/update', 'update');
+    Route::put('profile', 'update');
 });
 
 // Route Admin

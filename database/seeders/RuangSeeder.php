@@ -15,19 +15,19 @@ class RuangSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('rooms')->insert([
+        DB::table('ruang_lab')->insert([
             'nama_ruang' => 'Lab Data Science'
         ]);
 
-        DB::table('rooms')->insert([
+        DB::table('ruang_lab')->insert([
             'nama_ruang' => 'Lab Multimedia'
         ]);
 
-        DB::table('rooms')->insert([
+        DB::table('ruang_lab')->insert([
             'nama_ruang' => 'Lab Komputasi Dasar'
         ]);
 
-        DB::table('rooms')->insert([
+        DB::table('ruang_lab')->insert([
             'nama_ruang' => 'Lab Mikrokontroller'
         ]);
     }

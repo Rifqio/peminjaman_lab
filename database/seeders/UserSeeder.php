@@ -20,7 +20,6 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Student',
             'email' => 'student@student.uns.ac.id',
-            'phone' => 6287772151880,
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('123456')
         ]);
@@ -34,7 +33,6 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@mipa.uns.ac.id',
-            'phone' => 6286627182662,
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('123456')
         ]);
