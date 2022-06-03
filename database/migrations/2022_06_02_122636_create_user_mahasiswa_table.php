@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('prodi_id')->default('1')->constrained('prodi');
             $table->string('nim', 8)->unique()->nullable();
             $table->integer('angkatan')->nullable();
-            $table->bigInteger('phone')->nullable();
+            $table->string('phone',12)->nullable();
             $table->timestamps();
         });
     }
