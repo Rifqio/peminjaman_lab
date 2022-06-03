@@ -7,6 +7,10 @@
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
+        @elseif (session()->has('warning'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('warning') }}
+        </div>
         @endif
         <h1>Selamat Datang, Silahkan Pilih Layanan yang Tersedia</h1>
         <button><a href="peminjaman">Isi Form Peminjaman Lab</a></button>

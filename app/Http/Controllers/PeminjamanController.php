@@ -13,7 +13,7 @@ class PeminjamanController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->mahasiswa->nim && Auth::user()->mahasiswa->angkatan  === null) {
+        if (Auth::user()->mahasiswa->nim === null) {
             return redirect('/dashboard')->with('warning', 'Mohon untuk melengkapi profil sebelum melakukan peminjaman');
         } else {
             return view('peminjaman.home.index');
