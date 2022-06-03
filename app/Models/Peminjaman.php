@@ -9,7 +9,7 @@ class Peminjaman extends Model
 {
     protected $fillable = [
         'user_id',
-        'room_id',
+        'ruang_lab_id',
         'tanggal_awal_peminjaman',
         'tanggal_akhir_peminjaman',
         'status_id',
@@ -17,7 +17,7 @@ class Peminjaman extends Model
     ];
     public function room()
     {
-        return $this->belongsTo(Room::class, 'room_id');
+        return $this->belongsTo(Room::class, 'ruang_lab_id');
     }
 
     public function user()
@@ -30,5 +30,5 @@ class Peminjaman extends Model
         return $this->hasOne(Status::class, 'status_id');
     }
 
-    protected $table = 'peminjaman';
+    protected $table = 'surat_peminjaman_lab';
 }

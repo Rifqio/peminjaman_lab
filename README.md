@@ -14,5 +14,6 @@
  ## Jumat, 3 Juni 2022
 #### Deny
   - Memperbaiki fitur update profile mahasiswa di __ProfileController__
-
+#### Rio
+  - Restrukturisasi database
 

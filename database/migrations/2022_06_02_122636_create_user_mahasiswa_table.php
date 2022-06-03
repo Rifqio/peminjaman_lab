@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nim', 8)->unique()->nullable();
             $table->integer('angkatan')->nullable();
             $table->string('phone',12)->nullable();
+            $table->text('alamat')->nullable();
             $table->timestamps();
         });
     }

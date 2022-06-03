@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peminjaman', function (Blueprint $table) {
+        Schema::create('surat_peminjaman_lab', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('room_id')->constrained('rooms');
+            $table->foreignId('ruang_lab_id')->constrained('ruang_lab');
+            $table->text('judul_penelitian');
+            $table->string('sumber_dana');
+            $table->string('pembimbing');
+            $table->string('keterangan');
             $table->date('tanggal_awal_peminjaman');
             $table->date('tanggal_akhir_peminjaman');
-            $table->string('keterangan');
             $table->foreignId('status_id')->constrained('status_aktivasi');
             $table->timestamps();
         });

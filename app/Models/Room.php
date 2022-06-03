@@ -11,4 +11,6 @@ class Room extends Model
     {
         return $this->hasOne(Peminjaman::class);
     }
+
+    protected $table = 'ruang_lab';
 }
