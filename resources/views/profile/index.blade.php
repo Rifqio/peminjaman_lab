@@ -19,7 +19,7 @@
                     <label class="form-label">Prodi</label>
                     <select name="prodi" class="form-select @error('prodi') is-invalid @enderror">
                         @foreach ($prodi as $prodi)
-                        <option value="{{ $prodi->id }}" selected>{{ $prodi->nama_prodi }}</option>
+                         <option value="{{ $prodi->id }}" {{ $prodi->id == Auth::user()->mahasiswa->prodi_id ? 'selected' : '' }} >{{ $prodi->nama_prodi }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -29,6 +29,13 @@
                     <input type="text" name="angkatan" class="form-control"
                         value="{{ Auth::user()->mahasiswa->angkatan }}">
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nomor Hp</label>
+                    <input type="text" name="phone" class="form-control"
+                        value="{{ Auth::user()->mahasiswa->phone }}">
+                </div>
+
                 <div class="d-grid gap-2">
                     <button class="btn btn-outline-primary" type="submit">Submit</button>
                 </div>

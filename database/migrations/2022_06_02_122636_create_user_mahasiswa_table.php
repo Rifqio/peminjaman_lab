@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_mahasiswa', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('prodi_id')->constrained('prodi');
+            $table->foreignId('prodi_id')->default('1')->constrained('prodi');
             $table->string('nim', 8)->unique()->nullable();
             $table->integer('angkatan')->nullable();
             $table->bigInteger('phone')->nullable();

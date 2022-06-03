@@ -38,14 +38,12 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' =>  'required|email|max:255|unique:users|regex:/^[A-Za-z0-9\.]*@(student)[.](uns)[.](ac)[.](id)$/',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => 'required'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'phone' => $request->phone,
         ]);
         $user->attachRole('student');
         Mahasiswa::create([
