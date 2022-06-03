@@ -53,6 +53,7 @@
                         <input type="datetime-local" class="form-control" name="tanggal_akhir_peminjaman"
                             value={{ old('tanggal_akhir_peminjaman') }}>
                     </div>
+                    {{-- Tidak aman, secepatnya dipindahkan di controller --}}
                     <input type="hidden" name="status_id" value="1">
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
@@ -61,5 +62,4 @@
             </div>
         </div>
     </div>
-    <script></script>
 @endsection

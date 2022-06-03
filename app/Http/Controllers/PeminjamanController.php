@@ -13,23 +13,27 @@ class PeminjamanController extends Controller
 {
     public function index()
     {
-        return view('peminjaman.home.index');
+        if (Auth::user()->mahasiswa->nim && Auth::user()->mahasiswa->angkatan  === null) {
+            return redirect('/dashboard')->with('warning', 'Mohon untuk melengkapi profil sebelum melakukan peminjaman');
+        } else {
+            return view('peminjaman.home.index');
+        }
     }
 
     public function status_peminjaman()
     {
         $tanggal_awal = "peminjaman.tanggal_awal_peminjaman";
         $data =
-        DB::table("peminjaman")
-        ->join("status_aktivasi", function($join){
-            $join->on("peminjaman.status_id", "=", "status_aktivasi.id");
-        })
-        ->join("rooms", function($join){
-            $join->on("peminjaman.room_id", "=", "rooms.id");
-        })
-        ->select("peminjaman.keterangan", "status_aktivasi.status", "rooms.nama_ruang", "status_aktivasi.id",   $tanggal_awal)
-        ->where("peminjaman.user_id", "=", auth()->user()->id)
-        ->get();
+            DB::table("peminjaman")
+            ->join("status_aktivasi", function ($join) {
+                $join->on("peminjaman.status_id", "=", "status_aktivasi.id");
+            })
+            ->join("rooms", function ($join) {
+                $join->on("peminjaman.room_id", "=", "rooms.id");
+            })
+            ->select("peminjaman.keterangan", "status_aktivasi.status", "rooms.nama_ruang", "status_aktivasi.id",   $tanggal_awal)
+            ->where("peminjaman.user_id", "=", auth()->user()->id)
+            ->get();
 
         return view('peminjaman.form.status.index', ['data' => $data]);
     }
@@ -63,6 +67,4 @@ class PeminjamanController extends Controller
         ]);
         return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek email berkala untuk menunggu verifikasi');
     }
-
-
 }

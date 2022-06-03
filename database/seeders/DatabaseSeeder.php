@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             LaratrustSeeder::class,
             RuangSeeder::class,
             UserSeeder::class,
-            StatusSeeder::class
+            StatusSeeder::class,
+            ProdiSeeder::class,
+            MahasiswaSeeder::class,
         ]);
     }
 }

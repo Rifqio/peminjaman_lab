@@ -21,7 +21,7 @@ return [
             'profile' => 'r,u',
             'peminjaman' => 'c,r,u,d'
         ],
-        'petugas' => [
+        'kepala_lab' => [
             'profile' => 'c,r,u',
             'peminjaman' => 'r,u,d'
         ],
