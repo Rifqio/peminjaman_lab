@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('prodi_id')->constrained('prodi');
-            $table->string('nim', 8)->unique();
-            $table->integer('angkatan');
+            $table->string('nim', 8)->unique()->nullable();
+            $table->integer('angkatan')->nullable();
+            $table->bigInteger('phone')->nullable();
             $table->timestamps();
         });
     }
