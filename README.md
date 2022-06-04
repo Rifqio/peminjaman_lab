@@ -23,3 +23,5 @@
   - Add landing page
   - Add form surat bebas lab
 
+#### Deny
+  - Memperbaiki tampilan modal detail pada detail surat

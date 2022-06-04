@@ -22,7 +22,14 @@ class PeminjamanController extends Controller
 
     public function status_peminjaman()
     {
-        $peminjaman = Peminjaman::where('id', Auth::id());
+        // $peminjaman =DB::table("surat_peminjaman_lab")
+        // ->Join("users", function($join){
+        //     $join->on("surat_peminjaman_lab.user_id", "=", "users.id");
+        // })
+        // ->select("users.name", "surat_peminjaman_lab.status_id", "surat_peminjaman_lab.no_surat", "surat_peminjaman_lab.user_id")
+        // ->where("surat_peminjaman_lab.user_id", "=", Auth::id())
+        // ->get();
+        
         $tanggal_awal = "surat_peminjaman_lab.tanggal_awal_peminjaman";
         $data =
             DB::table("surat_peminjaman_lab")
@@ -32,13 +39,13 @@ class PeminjamanController extends Controller
             ->join("ruang_lab", function ($join) {
                 $join->on("surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id");
             })
-            ->select("surat_peminjaman_lab.keterangan", "status_aktivasi.status", "ruang_lab.nama_ruang", "status_aktivasi.id",   $tanggal_awal)
-            ->where("surat_peminjaman_lab.user_id", "=", auth()->user()->id)
+            ->select("surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.no_surat", "surat_peminjaman_lab.updated_at", "surat_peminjaman_lab.status_id", "status_aktivasi.status", "ruang_lab.nama_ruang", "status_aktivasi.id",   $tanggal_awal)
+            ->where("surat_peminjaman_lab.user_id", "=", Auth::id())
             ->get();
 
         return view('peminjaman.form.status.index', [
             'data' => $data,
-            'peminjaman' => $peminjaman,
+            // 'peminjaman' => $peminjaman,
         ]);
     }
 
