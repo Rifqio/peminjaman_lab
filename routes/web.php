@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BebasLabController;
@@ -21,7 +22,14 @@ Route::get('/', function () {
     return view('landingPage.index');
 });
 
-Route::controller(DashboardController::class)->middleware(['auth'])->group(function () {
+Route::get('/daftar', function () {
+    return view('auth.registration');
+});
+
+Route::get('/auth/redirect', [GoogleController::class, 'redirectToProvider']);
+Route::get('/auth/callback', [GoogleController::class, 'handleProviderCallback']);
+
+Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', 'index')->name('dashboard');
 });
 

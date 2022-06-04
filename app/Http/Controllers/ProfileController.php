@@ -44,7 +44,7 @@ class ProfileController extends Controller
             'nim' => $request->nim,
             'prodi_id' => $request->prodi_id,
             'angkatan' => $intAngkatan,
-            'phone' => $intPhone,
+            'phone' => "0".$intPhone,
         ]);
 
         User::where('id', auth()->user()->id)->update([
