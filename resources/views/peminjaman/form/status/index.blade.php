@@ -131,6 +131,7 @@
                                                 class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none"
                                                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Detail</button>
 
+
                                             <!-- Modal -->
                                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -138,16 +139,21 @@
                                                 <div class="modal-dialog modal-xl">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Modal
+                                                                title
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
+
+
                                                         <div class="modal-body">
                                                             @include('peminjaman.form.components.progress-bar')
                                                         </div>
+
                                                         <div class="modal-footer">
-                                                            <button type="button" class="px-4 py-2 text-red-500 bg-red-200 rounded hover:bg-red-50"
+                                                            <button type="button"
+                                                                class="px-4 py-2 text-red-500 bg-red-200 rounded hover:bg-red-50"
                                                                 data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
