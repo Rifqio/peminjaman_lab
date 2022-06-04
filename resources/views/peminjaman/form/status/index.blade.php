@@ -129,11 +129,12 @@
                                         @else
                                             <button
                                                 class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none"
-                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">Detail</button>
+                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $data->id }}">Detail</button>
 
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+
+                                            <div class="modal fade" id="staticBackdrop{{ $data->id }}" data-bs-backdrop="static"
                                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog modal-xl">
@@ -147,9 +148,11 @@
                                                         </div>
 
 
+
                                                         <div class="modal-body">
                                                             @include('peminjaman.form.components.progress-bar')
                                                         </div>
+
 
                                                         <div class="modal-footer">
                                                             <button type="button"

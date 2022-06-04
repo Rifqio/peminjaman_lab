@@ -25,3 +25,4 @@
 
 #### Deny
   - Memperbaiki tampilan modal detail pada detail surat
+  - Memperbaiki hasil modal detail surat yang mengeluarkan data dari data pertama
