@@ -34,5 +34,17 @@ class StatusSeeder extends Seeder
             'id' => 4,
             'status' => 'Terverifikasi Kepala Lab'
         ]);
+
+        DB::table('status_pembayaran')->insert([
+            'id' => 1,
+            'status' => 'Belum Lunas'
+        ]);
+
+        DB::table('status_pembayaran')->insert([
+            'id' => 2,
+            'status' => 'Lunas'
+        ]);
+
+
     }
 }

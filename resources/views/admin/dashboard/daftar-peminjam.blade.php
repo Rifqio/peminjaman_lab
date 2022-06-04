@@ -46,14 +46,6 @@
                                 <p class="font-medium">{{ $data->name }}</p>
                             </td>
                             <td class="px-7 2xl:px-0 inline-flex">
-                                {{-- <form action="{{ url('daftar-peminjam') }}" class="m-0 p-0" method="POST">
-                                <input type="hidden" name="status_id" value="1">
-                                <button class="inline" type="submit"><a href="/daftar-peminjam/{{ $data->id }}">Approve</a></button>
-                            </form>
-                            <form action="">
-                                <button>Tolak</button>
-                            </form> --}}
-
                                 <button type="button" class="" data-bs-toggle="modal"
                                     data-bs-target="#approveModal">
                                     Approve

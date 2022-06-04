@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BebasLabController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeminjamanController;
 
@@ -19,7 +18,7 @@ use App\Http\Controllers\PeminjamanController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingPage.index');
 });
 
 Route::controller(DashboardController::class)->middleware(['auth'])->group(function () {
@@ -32,20 +31,19 @@ Route::controller(ProfileController::class)->middleware(['auth'])->group(functio
     Route::put('profile', 'update');
 });
 
-// Route Admin
-Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('daftar-peminjam', 'daftar_peminjam');
-    Route::put('daftar-peminjam/update', 'approve');
-    Route::put('daftar-peminjam/tolak', 'disapprove');
+// Route Peminjaman
+Route::controller(PeminjamanController::class)->middleware(['auth', 'role:student'])->prefix('peminjaman')->group(function () {
+    Route::get('/', 'index');
+    Route::get('create', 'create');
+    Route::post('/', 'store');
+    Route::get('status', 'status_peminjaman');
 });
 
-//Route Peminjaman
-Route::controller(PeminjamanController::class)->middleware(['auth', 'role:student'])->group(function () {
-    Route::get('peminjaman', 'index');
-    Route::get('peminjaman/create', 'create');
-    Route::post('peminjaman', 'store');
-    Route::get('peminjaman/status', 'status_peminjaman');
+//Route Bebas Lab
+Route::controller(BebasLabController::class)->middleware(['auth', 'role:student'])->prefix('bebas-lab')->group(function (){
+    Route::get('/', 'index');
+    Route::get('create', 'create');
+    Route::post('create', 'store');
+    Route::get('status', 'status_surat');
 });
-
-
 require __DIR__ . '/auth.php';

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surat_permohonan_bebas_lab', function (Blueprint $table) {
+        Schema::create('status_pembayaran', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_mahasiswa_id')->constrained('user_mahasiswa');
-            $table->string('keterangan');
-            $table->text('judul');
-            $table->foreignId('status_id')->constrained('status_aktivasi');
-            $table->timestamps();
+            $table->string('status');
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bebas_lab');
+        Schema::dropIfExists('status_pembayaran');
     }
 };

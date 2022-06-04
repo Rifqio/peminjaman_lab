@@ -18,3 +18,8 @@
   - Restrukturisasi database
   - Memperbaiki Frontend dan menambah nomor surat
 
+## Sabtu, 4 Juni 2022
+#### Rio
+  - Add landing page
+  - Add form surat bebas lab
+

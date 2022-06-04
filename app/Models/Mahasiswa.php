@@ -21,6 +21,11 @@ class Mahasiswa extends Model
         return $this->hasOne(Prodi::class. 'prodi_id');
     }
 
+    public function bebas_lab()
+    {
+        return $this->hasOne(BebasLab::class);
+    }
+
 
     protected $table = 'user_mahasiswa';
 }

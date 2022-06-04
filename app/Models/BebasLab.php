@@ -9,5 +9,9 @@ class BebasLab extends Model
 {
     protected $guarded = ['id'];
 
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'user_mahasiswa_id');
+    }
     protected $table = 'surat_permohonan_bebas_lab';
 }

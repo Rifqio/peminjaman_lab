@@ -6,11 +6,11 @@
             <form action="/profile" method="post">
                 @csrf
                 @method('put')
+
                 <div class="mb-3">
-                    <label class="form-label">Nama</label>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama</label>
                     <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}">
                 </div>
-
 
                 <div class="mb-3">
                     <label class="form-label">NIM</label>

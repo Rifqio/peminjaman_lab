@@ -70,7 +70,7 @@
                         <i class="fa-solid fa-envelope text-4xl"></i>
 
                     </div>
-                    <a tabindex="0"
+                    <a href="/bebas-lab" tabindex="0"
                         class="cursor-pointer  focus:opacity-75 focus:underline hover:opacity-75  focus:outline-none text-gray-800 dark:text-gray-100 text-xl tracking-normal text-center font-medium mb-1">Surat
                         Ijin Bebas Lab</a>
                     <p
@@ -100,7 +100,9 @@
     </div>
 </div>
 @if (session()->has('success'))
-    <x-alert-badge :message="session('success')"/>
+    <x-alert-badge :message="session('success')" />
+@elseif (session()->has('warning'))
+    <x-danger-toast :message="session('warning')" />
 @endif
 
 @endsection

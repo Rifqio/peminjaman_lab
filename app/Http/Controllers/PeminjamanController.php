@@ -16,9 +16,8 @@ class PeminjamanController extends Controller
     {
         if (Auth::user()->mahasiswa->nim === null) {
             return redirect('/dashboard')->with('warning', 'Mohon untuk melengkapi profil sebelum melakukan peminjaman');
-        } else {
-            return view('peminjaman.home.index');
         }
+            return view('peminjaman.home.index');
     }
 
     public function status_peminjaman()
@@ -75,7 +74,7 @@ class PeminjamanController extends Controller
             'judul_penelitian' => request('judul_penelitian'),
             'sumber_dana' => request('sumber_dana'),
             'pembimbing' => request('pembimbing'),
-            'no_surat' => str_replace('-','',Carbon::now()->toDateString()).rand(1,100),
+            'no_surat' => str_replace('-','',Carbon::now()->toDateString()).rand(10,99),
             'tanggal_awal_peminjaman' => request('tanggal_awal_peminjaman'),
             'tanggal_akhir_peminjaman' => request('tanggal_akhir_peminjaman'),
             'status_id' => 1
