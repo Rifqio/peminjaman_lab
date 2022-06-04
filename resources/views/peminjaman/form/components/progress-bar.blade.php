@@ -4,7 +4,12 @@
             <div class="sm:mb-0 mb-4 flex items-center">
                 <a tabindex="0"
                     class="focus:text-gray-500 hover:text-gray-500 focus:underline focus:outline-none cursor-pointer  text-xl pl-4 font-semibold leading-5 text-gray-800 dark:text-gray-100">
-                    Nomer surat: {{ $data->no_surat }} </a>
+                    {{ $data->keterangan }} </a>
+            </div>
+            <div class="sm:mb-0 mb-4 flex items-center">
+                <a tabindex="0"
+                    class="focus:text-gray-500 italic hover:text-gray-500 focus:underline focus:outline-none cursor-pointer  text-xs pl-4 font-semibold leading-5 text-gray-800 dark:text-gray-100">
+                    No Surat: {{ $data->no_surat }} </a>
             </div>
 
         </div>
@@ -14,7 +19,7 @@
                     class="sm:w-full w-2 sm:h-2 h-64 bg-gray-100 flex sm:flex-row flex-col items-center justify-between">
                     <div
                         class="w-4 h-4 @if ($data->status_id >= 1) bg-indigo-700
-                        @else bg-gray-800 @endif 
+                        @else bg-gray-800 @endif
                      dark:bg-gray-100 rounded flex items-center justify-center">
 
                         @if ($data->status_id >= 1)
@@ -56,7 +61,7 @@
                         <a class="text-sm font-medium leading-4 text-indigo-700 dark:text-gray-100">Pending</a>
                         <p class="text-xs leading-3 pt-2.5 text-gray-500 dark:text-gray-400">
                             @if ($data->status_id === 1)
-                                strtotime({{ $data->updated_at }})
+                                ({{ $data->updated_at }})
                         </p>
                         @endif
                         </p>
@@ -66,7 +71,7 @@
                         </p>
                         <p class="text-xs leading-3 pt-2.5 text-gray-500 dark:text-gray-400">
                             @if ($data->status_id === 2)
-                                strtotime({{ $data->updated_at }})
+                                ({{ $data->updated_at }})
                             @endif
                         </p>
                     </div>
@@ -74,7 +79,7 @@
                         <p class="text-sm font-medium leading-4 text-indigo-700">Terverifikasi Petugas</p>
                         <p class="text-xs leading-3 pt-2.5 text-gray-500 dark:text-gray-400">
                             @if ($data->status_id === 3)
-                                strtotime({{ $data->updated_at }})
+                                ({{ $data->updated_at }})
                             @endif
                         </p>
                     </div>
@@ -83,7 +88,7 @@
                             Lab</p>
                         <p class="text-xs leading-3 pt-2.5 text-gray-500 dark:text-gray-400">
                             @if ($data->status_id === 4)
-                                strtotime({{ $data->updated_at }})
+                                ({{ $data->updated_at }})
                             @endif
                         </p>
                     </div>
@@ -95,7 +100,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex flex-col items-center">
                     <a tabindex="0"
-                        class="focus:outline-none cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4  @if ($data->status_id === 1) text-gray-800
+                        class="focus:outline-none pb-4  cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4  @if ($data->status_id === 1) text-gray-800
                         @else text-indigo-700 @endif  dark:text-gray-100">Pending</a>
                     <p class="text-xs leading-4 pt-2.5 text-gray-500 dark:text-gray-400">
                         @if ($data->status_id === 1)
@@ -106,7 +111,7 @@
                 </div>
                 <div class="flex flex-col items-center pl-10 md:pl-8 lg:pl-20">
                     <a tabindex="0"
-                        class="focus:outline-none cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4  @if ($data->status_id >= 2) text-indigo-800
+                        class="focus:outline-none pb-4 cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4  @if ($data->status_id >= 2) text-indigo-800
                         @else text-gray-700 @endif dark:text-gray-100">Terverifikasi
                         Dosen</a>
                     <p class="text-xs leading-4 pt-2.5 text-gray-500 dark:text-gray-400">
@@ -117,9 +122,9 @@
                 </div>
                 <div class="flex flex-col items-center pl-10 md:pl-8 lg:pl-20">
                     <a tabindex="0"
-                        class="focus:outline-none cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4 @if ($data->status_id >= 3) text-indigo-800
+                        class="focus:outline-none pb-4 cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4 @if ($data->status_id >= 3) text-indigo-800
                         @else text-gray-700 @endif ">Terverifikasi&nbsp;Petugas&nbsp;</a>
-                    <p class="text-xs leading-4 pt-2.5 text-gray-500 dark:text-gray-400">
+                    <p class="text-xs leading-4 text-gray-500 dark:text-gray-400">
                         @if ($data->status_id === 3)
                             {{ $data->updated_at }}
                         @endif
@@ -127,7 +132,7 @@
                 </div>
                 <div class="flex flex-col items-center pl-10 md:pl-8 lg:pl-20">
                     <a tabindex="0"
-                        class="focus:outline-none cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4 @if ($data->status_id === 4) text-indigo-800
+                        class="focus:outline-none  pb-4 cursor-pointer focus:underline focus:text-gray-500 hover:text-gray-400 text-sm font-medium leading-4 @if ($data->status_id === 4) text-indigo-800
                         @else text-gray-700 @endif dark:text-gray-400">Terverifikasi
                         Kepala Lab</a>
                     <p class="text-xs leading-4 pt-2.5 text-gray-500 dark:text-gray-400">

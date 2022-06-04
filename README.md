@@ -22,6 +22,7 @@
 #### Rio
   - Add landing page
   - Add form surat bebas lab
+  - Cetak form surat peminjaman lab
 
 #### Deny
   - Memperbaiki tampilan modal detail pada detail surat

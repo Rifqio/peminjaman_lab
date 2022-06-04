@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BebasLabController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeminjamanController;
 
@@ -45,6 +46,7 @@ Route::controller(PeminjamanController::class)->middleware(['auth', 'role:studen
     Route::get('create', 'create');
     Route::post('/', 'store');
     Route::get('status', 'status_peminjaman');
+    Route::get('cetak/{id}', 'generate_pdf');
 });
 
 //Route Bebas Lab
