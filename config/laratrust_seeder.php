@@ -12,23 +12,31 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'admin' => [
-            'users' => 'c,r,u,d',
-            'room' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
         'student' => [
             'profile' => 'r,u',
-            'peminjaman' => 'c,r,u,d'
-        ],
-        'kepala_lab' => [
-            'profile' => 'c,r,u',
-            'peminjaman' => 'r,u,d'
+            'peminjaman' => 'c,r,u,d',
+            'bebas_lab' => 'c,r,u,d',
         ],
         'dosen' => [
             'profile' => 'c,r,u',
-            'peminjaman' => 'r,u,d'
+            'peminjaman' => 'r,u',
+            'bebas_lab' => 'r,u'
         ],
+        'admin' => [
+            'peminjaman' => 'r,u',
+            'profile' => 'r,u',
+            'bebas_lab' => 'r,u'
+        ],
+        'kepala_lab' => [
+            'profile' => 'c,r,u',
+            'peminjaman' => 'r,u',
+            'bebas_lab' => 'r,u'
+        ],
+        'super_admin' => [
+            'user' => 'c,r,u,d',
+            'peminjaman' => 'c,r,u,d',
+            'bebas_lab' => 'c,r,u,d',
+        ]
     ],
 
     'permissions_map' => [

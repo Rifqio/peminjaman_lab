@@ -32,3 +32,4 @@
 #### Rio
   - Benerin kepala surat
   - Add datatables di admin
+  - Add notification via email yang ke send ke admin kalau ada surat masuk

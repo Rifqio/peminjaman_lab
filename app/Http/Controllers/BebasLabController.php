@@ -42,6 +42,7 @@ class BebasLabController extends Controller
             'user_mahasiswa_id' => Auth::user()->mahasiswa->id,
             'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."02".rand(10, 99),
             'keterangan' => request('keterangan'),
+            'status_id' => 1,
             'judul' => request('judul')
         ]);
         return redirect('dashboard')->with('success', 'Form telah diajukan, silahkan cek email berkala');

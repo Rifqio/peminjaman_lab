@@ -53,7 +53,7 @@ Route::controller(PeminjamanController::class)->middleware(['auth', 'role:studen
 Route::controller(BebasLabController::class)->middleware(['auth', 'role:student'])->prefix('bebas-lab')->group(function (){
     Route::get('/', 'index');
     Route::get('create', 'create');
-    Route::post('create', 'store');
+    Route::post('/', 'store');
     Route::get('status', 'status_surat');
 });
 require __DIR__ . '/auth.php';

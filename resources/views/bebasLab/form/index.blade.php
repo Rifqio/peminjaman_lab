@@ -3,7 +3,7 @@
 @section('container')
 <div class="px-2 ">
     <div class="flex flex-no-wrap items-start">
-        <div class="w-1/2 m-auto ">
+        <div class="w-full m-auto ">
             <div class="py-4 px-2">
                 <div class="bg-white rounded shadow mt-7 py-7">
 

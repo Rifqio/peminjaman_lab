@@ -42,5 +42,31 @@ class UserSeeder extends Seeder
             'user_id' => 2,
             'user_type' => 'App\Models\User'
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Dosen',
+            'email' => 'dosen@staff.uns.ac.id',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('123456')
+        ]);
+
+        DB::table('role_user')->insert([
+            'role_id' => 4,
+            'user_id' => 3,
+            'user_type' => 'App\Models\User'
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Kepala Lab',
+            'email' => 'lab@staff.uns.ac.id',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('123456')
+        ]);
+
+        DB::table('role_user')->insert([
+            'role_id' => 3,
+            'user_id' => 4,
+            'user_type' => 'App\Models\User'
+        ]);
     }
 }

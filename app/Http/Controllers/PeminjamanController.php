@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Models\Room;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Peminjaman;
+use App\Models\User;
+use App\Notifications\CreatePeminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -68,7 +70,8 @@ class PeminjamanController extends Controller
         //     'ruang_lab_id' => 'required',
         //     'keterangan' => 'required'
         // ]);
-        Peminjaman::create([
+        // $user = User::all();
+       Peminjaman::create([
             'ruang_lab_id' => request('ruang_lab_id'),
             'user_id' => Auth::id(),
             'keterangan' => request('keterangan'),
@@ -80,6 +83,7 @@ class PeminjamanController extends Controller
             'tanggal_akhir_peminjaman' => request('tanggal_akhir_peminjaman'),
             'status_id' => 1
         ]);
+        // $peminjaman->notify(new CreatePeminjaman())->$user->hasRole('admin');
         return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek status form di menu status');
     }
 
