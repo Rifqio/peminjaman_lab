@@ -27,12 +27,15 @@ Route::get('/daftar', function () {
     return view('auth.registration');
 });
 
+
+Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', 'index')->name('dashboard');
+});
+
+
 Route::get('/auth/redirect', [GoogleController::class, 'redirectToProvider']);
 Route::get('/auth/callback', [GoogleController::class, 'handleProviderCallback']);
 
-Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', 'index')->name('dashboard');
-});
 
 //Route Profile
 Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
@@ -41,7 +44,7 @@ Route::controller(ProfileController::class)->middleware(['auth'])->group(functio
 });
 
 // Route Peminjaman
-Route::controller(PeminjamanController::class)->middleware(['auth', 'role:student'])->prefix('peminjaman')->group(function () {
+Route::controller(PeminjamanController::class)->middleware(['auth'])->prefix('peminjaman')->group(function () {
     Route::get('/', 'index');
     Route::get('create', 'create');
     Route::post('/', 'store');
