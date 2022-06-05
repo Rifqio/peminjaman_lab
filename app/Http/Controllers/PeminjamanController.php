@@ -75,7 +75,7 @@ class PeminjamanController extends Controller
             'judul_penelitian' => request('judul_penelitian'),
             'sumber_dana' => request('sumber_dana'),
             'pembimbing' => request('pembimbing'),
-            'no_surat' => str_replace('-', '', Carbon::now()->toDateString()) . rand(10, 99),
+            'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."01".rand(10, 99),
             'tanggal_awal_peminjaman' => request('tanggal_awal_peminjaman'),
             'tanggal_akhir_peminjaman' => request('tanggal_akhir_peminjaman'),
             'status_id' => 1
@@ -101,7 +101,7 @@ class PeminjamanController extends Controller
             ->join("prodi", function ($join) {
                 $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
             })
-            ->select("users.name", "user_mahasiswa.nim", "users.email", "prodi.nama_prodi", "user_mahasiswa.alamat", "user_mahasiswa.phone", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.judul_penelitian", "ruang_lab.nama_ruang")
+            ->select("users.name", "user_mahasiswa.nim", "users.email", "prodi.nama_prodi", "user_mahasiswa.alamat", "user_mahasiswa.phone", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.judul_penelitian", "ruang_lab.nama_ruang", "surat_peminjaman_lab.no_surat")
             ->where("users.id", "=", Auth::id())
             ->where("surat_peminjaman_lab.id", "=", $id)
             ->get();

@@ -27,3 +27,8 @@
 #### Deny
   - Memperbaiki tampilan modal detail pada detail surat
   - Memperbaiki hasil modal detail surat yang mengeluarkan data dari data pertama
+
+## Minggu, 5 Juni 2022
+#### Rio
+  - Benerin kepala surat
+  - Add datatables di admin

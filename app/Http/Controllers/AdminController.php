@@ -19,6 +19,7 @@ class AdminController extends Controller
                 $join->on("surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id");
             })
             ->select("ruang_lab.nama_ruang", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.tanggal_awal_peminjaman", "users.name", "users.email", "surat_peminjaman_lab.id")
+            ->where("surat_peminjaman_lab.status_id", "=", 1)
             ->get();
         return view(
             'admin.dashboard.daftar-peminjam',
@@ -33,7 +34,7 @@ class AdminController extends Controller
         $approve =  Crypt::decrypt($request->status_id);
         $data =  Crypt::decrypt($request->id);
         Peminjaman::where('id', $data)->update(['status_id' => $approve]);
-        return redirect('/dashboard');
+        return redirect('/daftar-peminjam');
     }
 
     public function disapprove(Request $request)

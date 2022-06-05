@@ -9,13 +9,14 @@
             </div>
         </div>
         <div class="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
-            <table class="w-full whitespace-nowrap">
+            <table id="table" class="w-full whitespace-nowrap">
                 <thead>
                     <tr tabindex="0" class="focus:outline-none h-16 w-full text-sm leading-none text-gray-800 ">
                         <th class="font-normal text-left pl-4">Ruang Lab</th>
                         <th class="font-normal text-left pl-12">Keterangan</th>
                         <th class="font-normal text-left pl-12">Tanggal Peminjaman</th>
                         <th class="font-normal text-left pl-20">Peminjam</th>
+                        <th class="font-normal text-left pl-20"></th>
                     </tr>
                 </thead>
                 <tbody class="w-full">
@@ -45,14 +46,14 @@
                             <td class="pl-20">
                                 <p class="font-medium">{{ $data->name }}</p>
                             </td>
-                            <td class="px-7 2xl:px-0 inline-flex">
-                                <button type="button" class="" data-bs-toggle="modal"
+                            <td class="px-7 pt-4 2xl:px-0 inline-flex">
+                                <button type="button" class="bg-green-300 hover:bg-green-100 mr-2 text-green-700 px-4 py-2.5 rounded" data-bs-toggle="modal"
                                     data-bs-target="#approveModal">
                                     Approve
                                 </button>
-                                <button type="button" class="" data-bs-toggle="modal"
+                                <button type="button" class="bg-red-300 text-red-700 hover:bg-red-100 px-4 py-2.5 rounded" data-bs-toggle="modal"
                                     data-bs-target="#disapprovedModal">
-                                    Disapproved
+                                    Disapprove
                                 </button>
                             </td>
                         </tr>
@@ -90,7 +91,7 @@
                 </div>
             </div>
 
-            <!-- Modal Disaproved -->
+            <!-- Modal Disaprove -->
             <div class="modal fade" id="disapprovedModal" tabindex="-1" aria-labelledby="disapprovedModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\BebasLab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,7 @@ class BebasLabController extends Controller
     {
         BebasLab::create([
             'user_mahasiswa_id' => Auth::user()->mahasiswa->id,
+            'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."02".rand(10, 99),
             'keterangan' => request('keterangan'),
             'judul' => request('judul')
         ]);
