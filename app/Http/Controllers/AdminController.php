@@ -19,6 +19,7 @@ class AdminController extends Controller
                 $join->on("surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id");
             })
             ->select("ruang_lab.nama_ruang", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.tanggal_awal_peminjaman", "users.name", "users.email", "surat_peminjaman_lab.id")
+            ->orderBy("surat_peminjaman_lab.tanggal_awal_peminjaman", 'desc')
             ->where("surat_peminjaman_lab.status_id", "=", 1)
             ->get();
         return view(

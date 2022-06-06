@@ -38,3 +38,6 @@
 ## Senin, 6 Juni 2022
 #### Deny
   - Menambahkan view bebas lab
+#### Rio 
+  - Add form validation di Peminjaman
+
