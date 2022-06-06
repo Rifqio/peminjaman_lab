@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PeminjamanRequest;
 use Carbon\Carbon;
 use App\Models\Room;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -38,6 +39,7 @@ class PeminjamanController extends Controller
             })
             ->select("surat_peminjaman_lab.id", "surat_peminjaman_lab.no_surat", "surat_peminjaman_lab.keterangan", "ruang_lab.nama_ruang", "surat_peminjaman_lab.created_at", "surat_peminjaman_lab.updated_at", "surat_peminjaman_lab.status_id", "status_aktivasi.status", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
             ->where("users.id", "=", Auth::id())
+            ->orderBy("surat_peminjaman_lab.tanggal_awal_peminjaman", 'desc')
             ->get();
         return view('peminjaman.form.status.index', [
             'data' => $data,
@@ -64,30 +66,13 @@ class PeminjamanController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PeminjamanRequest $request)
     {
-        // $request->validate([
-        //     'ruang_lab_id' => 'required',
-        //     'keterangan' => 'required'
-        // ]);
-        // $user = User::all();
-       Peminjaman::create([
-            'ruang_lab_id' => request('ruang_lab_id'),
-            'user_id' => Auth::id(),
-            'keterangan' => request('keterangan'),
-            'judul_penelitian' => request('judul_penelitian'),
-            'sumber_dana' => request('sumber_dana'),
-            'pembimbing' => request('pembimbing'),
-            'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."01".rand(10, 99),
-            'tanggal_awal_peminjaman' => request('tanggal_awal_peminjaman'),
-            'tanggal_akhir_peminjaman' => request('tanggal_akhir_peminjaman'),
-            'status_id' => 1
-        ]);
-        // $peminjaman->notify(new CreatePeminjaman())->$user->hasRole('admin');
+        Peminjaman::create($request->validated());
         return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek status form di menu status');
     }
 
-    public function generate_pdf($id)
+    public function generate_permohonan($id)
     {
         $data = DB::table("surat_peminjaman_lab")
             ->join("users", function ($join) {
@@ -112,5 +97,9 @@ class PeminjamanController extends Controller
 
         $pdf = PDF::loadView('peminjaman.form.cetak.cetak', ['data' => $data]);
         return $pdf->stream();
+    }
+
+    public function generate_persetujuan($id)
+    {
     }
 }

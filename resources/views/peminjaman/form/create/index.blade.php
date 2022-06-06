@@ -52,6 +52,9 @@
                                                 class="relative flex items-center justify-between w-full pl-5 py-4 dropbtn-one"
                                                 value="{{ $ruang->id }}">{{ $ruang->nama_ruang }}</option>
                                             @endforeach
+                                            @error('ruang_lab_id')
+                                            <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                            @enderror
                                         </select>
                                     </div>
                                 </div>
@@ -67,6 +70,9 @@
                                     <input type="text"
                                         class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
                                         name="keterangan">
+                                    @error('keterangan')
+                                    <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div>
@@ -82,6 +88,9 @@
                                     <input type="date"
                                         class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
                                         name="tanggal_awal_peminjaman">
+                                    @error('tanggal_awal_peminjaman')
+                                    <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div>
@@ -90,6 +99,9 @@
                                     <input type="date"
                                         class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
                                         name="tanggal_akhir_peminjaman">
+                                    @error('tanggal_akhir_peminjaman')
+                                    <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -97,9 +109,14 @@
                     <div class="pt-6 border-gray-300 mt-2 px-7">
                         <p class="text-base font-semibold leading-4 text-gray-800">Judul Penelitian</p>
                         <div class="mt-10 border border-gray-300 rounded">
-                            <textarea name="judul_penelitian"
-                            id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."> </textarea>
-                        </div>
+                            <textarea name="judul_penelitian" id="message" rows="4"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Your message..."> </textarea>
+                                @error('judul_penelitian')
+                                <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <p class="text-sm capitalize font-semibold text-gray-400">*Wajib mengisi judul penelitian</p>
                     </div>
                     <hr class="h-[1px] bg-gray-100 my-14">
                     <div

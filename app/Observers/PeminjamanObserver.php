@@ -19,8 +19,8 @@ class PeminjamanObserver
      */
     public function created(Peminjaman $peminjaman)
     {
-       $user = User::whereRoleIs('admin')->get();
-       Notification::send($user, new CreatePeminjaman($peminjaman));
+    //    $user = User::whereRoleIs('admin')->get();
+    //    Notification::send($user, new CreatePeminjaman($peminjaman));
     }
 
     /**

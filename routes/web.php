@@ -33,10 +33,6 @@ Route::controller(DashboardController::class)->middleware(['auth', 'verified'])-
 });
 
 
-Route::get('/auth/redirect', [GoogleController::class, 'redirectToProvider']);
-Route::get('/auth/callback', [GoogleController::class, 'handleProviderCallback']);
-
-
 //Route Profile
 Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
     Route::get('profile', 'index')->name('profile');
@@ -44,12 +40,12 @@ Route::controller(ProfileController::class)->middleware(['auth'])->group(functio
 });
 
 // Route Peminjaman
-Route::controller(PeminjamanController::class)->middleware(['auth'])->prefix('peminjaman')->group(function () {
+Route::controller(PeminjamanController::class)->middleware(['auth', 'role:student'])->prefix('peminjaman')->group(function () {
     Route::get('/', 'index');
     Route::get('create', 'create');
     Route::post('/', 'store');
     Route::get('status', 'status_peminjaman');
-    Route::get('cetak/{id}', 'generate_pdf');
+    Route::get('cetak/{id}', 'generate_permohonan');
 });
 
 //Route Bebas Lab
