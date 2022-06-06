@@ -47,16 +47,69 @@
                                 <p class="font-medium">{{ $data->name }}</p>
                             </td>
                             <td class="px-7 pt-4 2xl:px-0 inline-flex">
-                                <button type="button" class="bg-green-300 hover:bg-green-100 mr-2 text-green-700 px-4 py-2.5 rounded" data-bs-toggle="modal"
-                                    data-bs-target="#approveModal">
+                                <button type="button"
+                                    class="bg-green-300 hover:bg-green-100 mr-2 text-green-700 px-4 py-2.5 rounded"
+                                    data-bs-toggle="modal" data-bs-target="#approveModal">
                                     Approve
                                 </button>
-                                <button type="button" class="bg-red-300 text-red-700 hover:bg-red-100 px-4 py-2.5 rounded" data-bs-toggle="modal"
-                                    data-bs-target="#disapprovedModal">
+                                <button type="button" class="bg-red-300 text-red-700 hover:bg-red-100 px-4 py-2.5 rounded"
+                                    data-bs-toggle="modal" data-bs-target="#disapprovedModal">
                                     Disapprove
                                 </button>
                             </td>
                         </tr>
+                        <!-- Modal Aproved -->
+                        <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="approveModalLabel">Approvement</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to approve this file?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="" data-bs-dismiss="modal">Close</button>
+                                        <form action="{{ url('daftar-peminjam/update') }}" method="POST">
+                                            @csrf
+                                            @method('put')
+                                            <input type="hidden" name="status_id" value="{{ Crypt::encrypt(2) }}">
+                                            <input type="hidden" name="id" value="{{ Crypt::encrypt($data->id) }}">
+                                            <button type="submit" class="">Save changes</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Disaprove -->
+                        <div class="modal fade" id="disapprovedModal" tabindex="-1"
+                            aria-labelledby="disapprovedModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="disapprovedModalLabel">Disapprovement</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to disapproved this file?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="" data-bs-dismiss="modal">Close</button>
+                                        <form action="{{ url('daftar-peminjam/tolak') }}" method="POST">
+                                            @csrf
+                                            @method('put')
+                                            <input type="hidden" name="status_id" value="{{ Crypt::encrypt(3) }}">
+                                            <input type="hidden" name="id" value="{{ Crypt::encrypt($data->id) }}">
+                                            <button type="submit">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </tbody>
             </table>
@@ -64,58 +117,6 @@
             <!-- Button trigger modal -->
 
 
-            <!-- Modal Aproved -->
-            <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="approveModalLabel">Approvement</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to approve this file?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="" data-bs-dismiss="modal">Close</button>
-                            <form action="{{ url('daftar-peminjam/update') }}" method="POST">
-                                @csrf
-                                @method('put')
-                                <input type="hidden" name="status_id" value="{{ Crypt::encrypt(2) }}">
-                                <input type="hidden" name="id" value="{{ Crypt::encrypt($data->id) }}">
-                                <button type="submit" class="">Save changes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal Disaprove -->
-            <div class="modal fade" id="disapprovedModal" tabindex="-1" aria-labelledby="disapprovedModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="disapprovedModalLabel">Disapprovement</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to disapproved this file?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="" data-bs-dismiss="modal">Close</button>
-                            <form action="{{ url('daftar-peminjam/tolak') }}" method="POST">
-                                @csrf
-                                @method('put')
-                                <input type="hidden" name="status_id" value="{{ Crypt::encrypt(3) }}">
-                                <input type="hidden" name="id" value="{{ Crypt::encrypt($data->id) }}">
-                                <button type="submit">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
