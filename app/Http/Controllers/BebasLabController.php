@@ -50,6 +50,20 @@ class BebasLabController extends Controller
 
     public function status_surat()
     {
+        $data =
+        DB::table("surat_permohonan_bebas_lab")
+        ->Join("status_aktivasi", function($join){
+            $join->on("surat_permohonan_bebas_lab.status_id", "=", "status_aktivasi.id");
+        })
+        ->Join("user_mahasiswa", function($join){
+            $join->on("surat_permohonan_bebas_lab.user_mahasiswa_id", "=", "user_mahasiswa.id");
+        })
+        ->select("surat_permohonan_bebas_lab.id", "surat_permohonan_bebas_lab.no_surat", "surat_permohonan_bebas_lab.judul", "surat_permohonan_bebas_lab.status_id", "surat_permohonan_bebas_lab.created_at", "surat_permohonan_bebas_lab.updated_at", "status_aktivasi.status", "surat_permohonan_bebas_lab.keterangan")
+        ->where("user_mahasiswa.user_id", "=", Auth::id())
+        ->get();
 
+        return view('peminjaman.form.status.bebaslab', [
+            'data' => $data,
+        ]);
     }
 }
