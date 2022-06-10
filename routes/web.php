@@ -23,15 +23,10 @@ Route::get('/', function () {
     return view('landingPage.index');
 });
 
-Route::get('/daftar', function () {
-    return view('auth.registration');
-});
-
 
 Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
 });
-
 
 //Route Profile
 Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
@@ -45,7 +40,7 @@ Route::controller(PeminjamanController::class)->middleware(['auth', 'role:studen
     Route::get('create', 'create');
     Route::post('/', 'store');
     Route::get('status', 'status_peminjaman');
-    Route::get('cetak/{id}', 'generate_permohonan');
+    Route::get('cetak/{id}', 'generate_persetujuan');
 });
 
 //Route Bebas Lab
@@ -56,3 +51,7 @@ Route::controller(BebasLabController::class)->middleware(['auth', 'role:student'
     Route::get('status', 'status_surat');
 });
 require __DIR__ . '/auth.php';
+
+Route::get('/daftar', function () {
+    return view('auth.registration');
+});

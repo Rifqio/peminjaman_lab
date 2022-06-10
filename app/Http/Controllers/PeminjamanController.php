@@ -95,11 +95,27 @@ class PeminjamanController extends Controller
             ->where("surat_peminjaman_lab.id", "=", $id)
             ->get();
 
-        $pdf = PDF::loadView('peminjaman.form.cetak.cetak', ['data' => $data]);
+        $pdf = PDF::loadView('peminjaman.form.cetak.permohonan', ['data' => $data]);
         return $pdf->stream();
     }
 
     public function generate_persetujuan($id)
     {
+        $data = DB::table("surat_peminjaman_lab")
+            ->join("users", function ($join) {
+                $join->on("surat_peminjaman_lab.user_id", "=", "users.id");
+            })
+            ->join("user_mahasiswa", function ($join) {
+                $join->on("users.id", "=", "user_mahasiswa.user_id");
+            })
+            ->join("prodi", function ($join) {
+                $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
+            })
+            ->select("users.name", "surat_peminjaman_lab.no_surat", "user_mahasiswa.nim", "prodi.nama_prodi", "surat_peminjaman_lab.judul_penelitian", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.sumber_dana", "surat_peminjaman_lab.pembimbing", "user_mahasiswa.phone", "users.email", "user_mahasiswa.alamat", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
+            ->where("users.id", "=", Auth::id())
+            ->where("surat_peminjaman_lab.id", "=", $id)
+            ->get();
+        $pdf = PDF::loadView('peminjaman.form.cetak.persetujuan', ['data' => $data]);
+        return $pdf->stream();
     }
 }

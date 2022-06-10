@@ -41,3 +41,7 @@
 #### Rio 
   - Add form validation di Peminjaman
 
+## Jumat, 10 Juni 2022
+#### Rio 
+  - Add cetak persetujuan akses peminjaman pdf
+
