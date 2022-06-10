@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BebasLabRequest;
 use Carbon\Carbon;
 use App\Models\BebasLab;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class BebasLabController extends Controller
 {
     public function index()
     {
+        
         if (Auth::user()->mahasiswa->nim === null) {
             return redirect('/dashboard')->with('warning', 'Mohon untuk melengkapi profil sebelum mengisi surat bebas lab');
         }
@@ -36,15 +38,9 @@ class BebasLabController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(BebasLabRequest $req)
     {
-        BebasLab::create([
-            'user_mahasiswa_id' => Auth::user()->mahasiswa->id,
-            'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."02".rand(10, 99),
-            'keterangan' => request('keterangan'),
-            'status_id' => 1,
-            'judul' => request('judul')
-        ]);
+        BebasLab::create($req->validated());
         return redirect('dashboard')->with('success', 'Form telah diajukan, silahkan cek email berkala');
     }
 
