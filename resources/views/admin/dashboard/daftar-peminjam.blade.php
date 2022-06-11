@@ -56,6 +56,10 @@
                                     data-bs-toggle="modal" data-bs-target="#disapprovedModal">
                                     Disapprove
                                 </button>
+                                <button type="button"
+                                    class="bg-blue-300 hover:bg-blue-100 ml-2 text-blue-700 px-4 py-2.5 rounded">
+                                    <a href="/daftar-peminjam/cetak/{{ $data->id }}" target="_blank">Detail</a>
+                                </button>
                             </td>
                         </tr>
                         <!-- Modal Aproved -->

@@ -45,3 +45,6 @@
 #### Rio 
   - Add cetak persetujuan akses peminjaman pdf
 
+## Sabtu, 11 Juni 2022
+#### Deny
+  - Add detail tentang permohonan pada halaman admin dalam bentuk PDF
