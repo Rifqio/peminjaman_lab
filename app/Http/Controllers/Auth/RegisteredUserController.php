@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guest;
 use App\Models\Mahasiswa;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -21,7 +22,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.registration');
     }
 
     /**
@@ -36,7 +37,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' =>  'required|email|max:255|unique:users|regex:/^[A-Za-z0-9\.]*@(student)[.](uns)[.](ac)[.](id)$/',
+            'email' =>  'required|email|max:255|unique:users', //|regex:/^[A-Za-z0-9\.]*@(student|mipa|staff)[.](uns)[.](ac)[.](id)$/
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -45,10 +46,20 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user->attachRole('student');
-        Mahasiswa::create([
-            'user_id' => $user->id,
-        ]);
+
+        // Cek apakah user student atau guest
+        if (strpos($user->email, 'student.uns.ac.id')) {
+            $user->attachRole('student');
+            Mahasiswa::create([
+                'user_id' => $user->id,
+            ]);
+
+        } else {
+            $user->attachRole('guest');
+            Guest::create([
+                'user_id' => $user->id,
+            ]);
+        }
 
         event(new Registered($user));
 

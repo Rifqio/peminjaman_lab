@@ -17,6 +17,10 @@ return [
             'peminjaman' => 'c,r,u,d',
             'bebas_lab' => 'c,r,u,d',
         ],
+        'guest' => [
+            'profile' => 'r,u',
+            'uji_sampel' => 'c,r,u,d'
+        ],
         'dosen' => [
             'profile' => 'c,r,u',
             'peminjaman' => 'r,u',

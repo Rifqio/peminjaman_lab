@@ -53,4 +53,6 @@
 #### Rio
   - Restrukturisasi Database
   - Revisi seluruh form menjadi sesuai format
+  - Menambah role guest
+  - Validasi form register, jika tidak menggunakan domain student maka otomatis menjadi role guest
 
