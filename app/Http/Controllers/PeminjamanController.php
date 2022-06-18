@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PeminjamanRequest;
 use Carbon\Carbon;
 use App\Models\Room;
-use Barryvdh\DomPDF\Facade as PDF;
-use App\Models\Peminjaman;
 use App\Models\User;
-use App\Notifications\CreatePeminjaman;
+use App\Models\Peminjaman;
+use App\Models\SumberDana;
+use App\Models\TujuanAkses;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Notifications\CreatePeminjaman;
+use App\Http\Requests\PeminjamanRequest;
+use Illuminate\Support\Facades\Notification;
 
 class PeminjamanController extends Controller
 {
@@ -60,16 +63,23 @@ class PeminjamanController extends Controller
             ->where("users.id", "=", Auth::id())
             ->get();
         $ruangan = Room::all();
+        $tujuan_akses = TujuanAkses::all();
+        $sumber_dana = SumberDana::all();
         return view('peminjaman.form.create.index', [
             'ruangan' => $ruangan,
-            'prodi' => $prodi
+            'prodi' => $prodi,
+            'tujuan_akses' => $tujuan_akses,
+            'sumber_dana' => $sumber_dana
         ]);
     }
 
     public function store(PeminjamanRequest $request)
     {
+        // dd($request);
         Peminjaman::create($request->validated());
         return redirect('/dashboard')->with('success', 'Form telah dibuat, silahkan cek status form di menu status');
+        // $user = User::whereRoleIs('admin')->get();
+        // Notification::send($user);
     }
 
     public function generate_permohonan($id)

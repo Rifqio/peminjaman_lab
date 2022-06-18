@@ -27,12 +27,12 @@ class PeminjamanRequest extends FormRequest
     {
         return [
             'ruang_lab_id' => 'required|integer|not_in:0',
-            'keterangan' => 'required',
+            'tujuan_akses_id' => 'required',
             'judul_penelitian' => 'required',
             'tanggal_awal_peminjaman' => 'required|date|after:yesterday',
-            'tanggal_akhir_peminjaman' => 'required|date|after:today',
+            'tanggal_akhir_peminjaman' => 'required',
             'judul_penelitian' => 'nullable',
-            'sumber_dana' => 'nullable',
+            'sumber_dana_id' => 'nullable',
             'pembimbing' => 'nullable',
             'user_id' => 'required',
             'status_id' => 'required',
@@ -43,10 +43,12 @@ class PeminjamanRequest extends FormRequest
     // Mengisi data sekaligus validasi
     public function prepareForValidation()
     {
+        $tanggal_awal_peminjaman = request('tanggal_awal_peminjaman');
         $this->merge([
             'user_id' => Auth::id(),
             'status_id' => 1,
-            'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."01".rand(10, 99)
+            'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."01".rand(10, 99),
+            'tanggal_akhir_peminjaman' => Carbon::parse($tanggal_awal_peminjaman)->addMonths(4)
         ]);
     }
 

@@ -48,3 +48,9 @@
 ## Sabtu, 11 Juni 2022
 #### Deny
   - Add detail tentang permohonan pada halaman admin dalam bentuk PDF
+
+## Sabtu, 18 Juni 2022
+#### Rio
+  - Restrukturisasi Database
+  - Revisi seluruh form menjadi sesuai format
+

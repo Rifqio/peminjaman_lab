@@ -42,13 +42,22 @@
                                     </div>
 
                                     <div>
-                                        <p class="text-base font-medium leading-none text-gray-800">Dalam Rangka</p>
-                                        <input
-                                            class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
-                                            name="keterangan">
-                                        @error('keterangan')
-                                            <p class="text-red-500 font-semibold">{{ $message }}</p>
-                                        @enderror
+                                        <p class="text-base font-medium leading-none text-gray-800 pb-4">Tujuan Bebas Lab</p>
+                                        <div class="relative top-1">
+                                            <select
+                                                class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                id="grid-state" name="tujuan_id">
+                                                <option value="">Pilih Tujuan</option>
+                                                @foreach ($tujuan as $tujuan)
+                                                <option
+                                                    class="relative flex items-center justify-between w-full pl-5 py-4 dropbtn-one"
+                                                    value="{{ $tujuan->id }}">{{ $tujuan->tujuan }}</option>
+                                                @endforeach
+                                                @error('tujuan')
+                                                <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                                @enderror
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div>

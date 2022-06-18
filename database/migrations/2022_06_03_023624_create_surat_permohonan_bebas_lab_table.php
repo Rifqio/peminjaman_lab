@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_mahasiswa_id')->constrained('user_mahasiswa');
             $table->bigInteger('no_surat');
-            $table->string('keterangan');
+            $table->foreignId('tujuan_id')->constrained('tujuan_bebas_lab');
             $table->text('judul');
             $table->foreignId('status_id')->constrained('status_aktivasi');
             $table->timestamps();

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('ruang_lab_id')->constrained('ruang_lab');
             $table->text('judul_penelitian');
-            $table->string('sumber_dana');
+            $table->foreignId('sumber_dana_id')->constrained('sumber_dana_peminjaman');
             $table->string('pembimbing');
-            $table->string('keterangan');
+            $table->foreignId('tujuan_akses_id')->constrained('tujuan_akses_lab');
             $table->date('tanggal_awal_peminjaman');
             $table->date('tanggal_akhir_peminjaman');
             $table->foreignId('status_id')->constrained('status_aktivasi');

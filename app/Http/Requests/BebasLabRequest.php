@@ -28,9 +28,9 @@ class BebasLabRequest extends FormRequest
         return [
             'user_mahasiswa_id' => 'required',
             'no_surat' => 'required',
-            'keterangan' => 'required',
             'status_id' => 'required',
-            'judul' => 'required'
+            'judul' => 'required',
+            'tujuan_id' => 'required',
         ];
     }
 

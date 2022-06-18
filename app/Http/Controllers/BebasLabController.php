@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BebasLabRequest;
 use Carbon\Carbon;
 use App\Models\BebasLab;
 use Illuminate\Http\Request;
+use App\Models\TujuanBebasLab;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BebasLabRequest;
 
 class BebasLabController extends Controller
 {
@@ -32,9 +33,10 @@ class BebasLabController extends Controller
         })
         ->where("users.id", "=", Auth::id())
         ->get();
-
+        $tujuan = TujuanBebasLab::all();
         return view('bebasLab.form.index', [
-            'prodi' => $prodi
+            'prodi' => $prodi,
+            'tujuan' => $tujuan
         ]);
     }
 

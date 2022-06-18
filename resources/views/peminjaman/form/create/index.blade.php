@@ -66,34 +66,56 @@
                                 </div>
 
                                 <div>
-                                    <p class="text-base font-medium leading-none text-gray-800">Keterangan</p>
-                                    <input type="text"
-                                        class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
-                                        name="keterangan">
-                                    @error('keterangan')
-                                    <p class="text-red-500 font-semibold">{{ $message }}</p>
-                                    @enderror
+                                    <p class="text-base font-medium leading-none text-gray-800 pb-4">Tujuan Akses Lab</p>
+                                    <div class="relative top-1">
+                                        <select
+                                            class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="grid-state" name="tujuan_akses_id">
+                                            <option value="">Pilih Tujuan</option>
+                                            @foreach ($tujuan_akses as $tujuan)
+                                            <option
+                                                class="relative flex items-center justify-between w-full pl-5 py-4 dropbtn-one"
+                                                value="{{ $tujuan->id }}">{{ $tujuan->tujuan }}</option>
+                                            @endforeach
+                                            @error('tujuan_akses')
+                                            <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                            @enderror
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <p class="text-base font-medium leading-none text-gray-800">Sumber Dana</p>
-                                    <input type="text"
-                                        class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
-                                        name="sumber_dana">
+                                    <p class="text-base font-medium leading-none text-gray-800 pb-4">Sumber Dana</p>
+                                    <div class="relative top-1">
+                                        <select
+                                            class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="grid-state" name="sumber_dana_id">
+                                            <option value="">Pilih Sumber Dana</option>
+                                            @foreach ($sumber_dana as $dana)
+                                            <option
+                                                class="relative flex items-center justify-between w-full pl-5 py-4 dropbtn-one"
+                                                value="{{ $dana->id }}">{{ $dana->sumber_dana }}</option>
+                                            @endforeach
+                                            @error('sumber_dana')
+                                            <p class="text-red-500 font-semibold">{{ $message }}</p>
+                                            @enderror
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <p class="text-base font-medium leading-none text-gray-800">Tanggal Awal Peminjaman
+                                    <p class="text-base font-medium leading-none text-gray-800">Tanggal Akses Lab
                                     </p>
                                     <input type="date"
                                         class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
                                         name="tanggal_awal_peminjaman">
+                                    <p class="font-semibold text-sm text-gray-400">*Berlaku selama 4 bulan</p>
                                     @error('tanggal_awal_peminjaman')
                                     <p class="text-red-500 font-semibold">{{ $message }}</p>
                                     @enderror
                                 </div>
 
-                                <div>
+                                {{-- <div>
                                     <p class="text-base font-medium leading-none text-gray-800">Tanggal Akhir Peminjaman
                                     </p>
                                     <input type="date"
@@ -102,7 +124,7 @@
                                     @error('tanggal_akhir_peminjaman')
                                     <p class="text-red-500 font-semibold">{{ $message }}</p>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                             </div>
                     </div>
@@ -112,11 +134,11 @@
                             <textarea name="judul_penelitian" id="message" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Your message..."> </textarea>
-                                @error('judul_penelitian')
-                                <p class="text-red-500 font-semibold">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <p class="text-sm capitalize font-semibold text-gray-400">*Wajib mengisi judul penelitian</p>
+                            @error('judul_penelitian')
+                            <p class="text-red-500 font-semibold">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <p class="text-sm capitalize font-semibold text-gray-400">*Wajib mengisi judul penelitian</p>
                     </div>
                     <hr class="h-[1px] bg-gray-100 my-14">
                     <div

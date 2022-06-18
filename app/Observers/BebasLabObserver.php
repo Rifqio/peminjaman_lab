@@ -17,8 +17,8 @@ class BebasLabObserver
      */
     public function created(BebasLab $bebasLab)
     {
-        $user = User::whereRoleIs('admin')->get();
-        Notification::send($user, new CreateBebasLab($bebasLab));
+        // $user = User::whereRoleIs('admin')->get();
+        // Notification::send($user, new CreateBebasLab($bebasLab));
     }
 
     /**

@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             ProdiSeeder::class,
             MahasiswaSeeder::class,
+            TujuanSeeder::class,
+            SumberDanaSeeder::class,
         ]);
     }
 }
