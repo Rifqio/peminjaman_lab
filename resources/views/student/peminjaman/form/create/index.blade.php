@@ -114,18 +114,6 @@
                                     <p class="text-red-500 font-semibold">{{ $message }}</p>
                                     @enderror
                                 </div>
-
-                                {{-- <div>
-                                    <p class="text-base font-medium leading-none text-gray-800">Tanggal Akhir Peminjaman
-                                    </p>
-                                    <input type="date"
-                                        class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
-                                        name="tanggal_akhir_peminjaman">
-                                    @error('tanggal_akhir_peminjaman')
-                                    <p class="text-red-500 font-semibold">{{ $message }}</p>
-                                    @enderror
-                                </div> --}}
-
                             </div>
                     </div>
                     <div class="pt-6 border-gray-300 mt-2 px-7">
