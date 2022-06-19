@@ -15,7 +15,7 @@ class ProfileController extends Controller
     {
         $prodi = Prodi::all();
         return view(
-            'profile.index',
+            'student.profile.index',
             [
                 'prodi' => $prodi,
             ]

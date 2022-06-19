@@ -14,11 +14,11 @@ class BebasLabController extends Controller
 {
     public function index()
     {
-        
+
         if (Auth::user()->mahasiswa->nim === null) {
             return redirect('/dashboard')->with('warning', 'Mohon untuk melengkapi profil sebelum mengisi surat bebas lab');
         }
-        return view('bebasLab.home.index');
+        return view('student.bebasLab.home.index');
     }
 
     public function create()
@@ -34,7 +34,7 @@ class BebasLabController extends Controller
         ->where("users.id", "=", Auth::id())
         ->get();
         $tujuan = TujuanBebasLab::all();
-        return view('bebasLab.form.index', [
+        return view('student.bebasLab.form.index', [
             'prodi' => $prodi,
             'tujuan' => $tujuan
         ]);

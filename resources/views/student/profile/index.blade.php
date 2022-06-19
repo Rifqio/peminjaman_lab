@@ -1,4 +1,4 @@
-@extends('home.layouts.layout')
+@extends('student.home.layouts.layout')
 @section('container')
 <div class="container min-h-screen">
     <div class="col-6 m-auto">

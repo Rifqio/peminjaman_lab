@@ -50,12 +50,5 @@ Route::controller(BebasLabController::class)->middleware(['auth', 'role:student'
     Route::post('/', 'store');
     Route::get('status', 'status_surat');
 });
+
 require __DIR__ . '/auth.php';
-
-Route::get('/masuk', function () {
-    return view('auth.signin');
-});
-
-Route::get('/daftar', function () {
-    return view('auth.registration');
-});

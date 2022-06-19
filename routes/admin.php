@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 
 Route::prefix('daftar-peminjam')->group(function () {
     Route::get('/', 'daftar_peminjam');

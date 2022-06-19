@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 use App\Notifications\CreatePeminjaman;
 use App\Http\Requests\PeminjamanRequest;
 use Illuminate\Support\Facades\Notification;
@@ -24,7 +23,7 @@ class PeminjamanController extends Controller
         if (Auth::user()->mahasiswa->nim === null) {
             return redirect('/dashboard')->with('warning', 'Mohon untuk melengkapi profil sebelum melakukan peminjaman');
         }
-        return view('peminjaman.home.index');
+        return view('student.peminjaman.home.index');
     }
 
     public function status_peminjaman()
@@ -44,7 +43,7 @@ class PeminjamanController extends Controller
             ->where("users.id", "=", Auth::id())
             ->orderBy("surat_peminjaman_lab.tanggal_awal_peminjaman", 'desc')
             ->get();
-        return view('peminjaman.form.status.index', [
+        return view('student.peminjaman.form.status.index', [
             'data' => $data,
             // 'pemin>onjaman' => $peminjaman,
         ]);
@@ -65,7 +64,7 @@ class PeminjamanController extends Controller
         $ruangan = Room::all();
         $tujuan_akses = TujuanAkses::all();
         $sumber_dana = SumberDana::all();
-        return view('peminjaman.form.create.index', [
+        return view('student.peminjaman.form.create.index', [
             'ruangan' => $ruangan,
             'prodi' => $prodi,
             'tujuan_akses' => $tujuan_akses,
@@ -105,7 +104,7 @@ class PeminjamanController extends Controller
             ->where("surat_peminjaman_lab.id", "=", $id)
             ->get();
 
-        $pdf = PDF::loadView('peminjaman.form.cetak.permohonan', ['data' => $data]);
+        $pdf = PDF::loadView('student.peminjaman.form.cetak.permohonan', ['data' => $data]);
         return $pdf->stream();
     }
 
@@ -125,7 +124,7 @@ class PeminjamanController extends Controller
             ->where("users.id", "=", Auth::id())
             ->where("surat_peminjaman_lab.id", "=", $id)
             ->get();
-        $pdf = PDF::loadView('peminjaman.form.cetak.persetujuan', ['data' => $data]);
+        $pdf = PDF::loadView('student.peminjaman.form.cetak.persetujuan', ['data' => $data]);
         return $pdf->stream();
     }
 }

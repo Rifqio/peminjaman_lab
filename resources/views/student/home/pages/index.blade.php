@@ -1,4 +1,4 @@
-@extends('home.layouts.layout')
+@extends('student.home.layouts.layout')
 
 @section('container')
 <div class="w-full py-16">
