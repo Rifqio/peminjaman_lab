@@ -1,8 +1,8 @@
-<div class="dark:bg-gray-900">
+<div>
     <section class="mx-auto container py-20">
         <div class="flex justify-center items-center flex-col">
             <div
-                class="lg:text-6xl md:text-5xl text-4xl font-black leading-10 text-center text-gray-800 dark:text-white">
+                class="lg:text-6xl md:text-5xl text-4xl font-black leading-10 text-center text-gray-800 ">
                 <h1>Layanan Kami</h1>
             </div>
             <div
@@ -12,10 +12,10 @@
                     <div class="mb-6">
                         <i class="fa-solid fa-building-circle-check text-4xl text-indigo-700"></i>
                     </div>
-                    <div class="text-gray-800 dark:text-white text-2xl font-semibold text-center">
+                    <div class="text-gray-800  text-2xl font-semibold text-center">
                         <h2>Peminjaman Lab Terpadu</h2>
                     </div>
-                    <div class="text-gray-600 dark:text-gray-300 mt-2 text-lg text-center">
+                    <div class="text-gray-600  mt-2 text-lg text-center">
                         <p>Akses lab terpadu diluar jam perkuliahan</p>
                     </div>
                 </div>
@@ -24,10 +24,10 @@
                     <div class="mb-6">
                         <i class="fa-solid fa-envelope text-4xl text-indigo-700"></i>
                     </div>
-                    <div class="text-gray-800 dark:text-white text-2xl font-semibold text-center">
+                    <div class="text-gray-800 text-2xl font-semibold text-center">
                         <h2>Surat Bebas Lab</h2>
                     </div>
-                    <div class="text-gray-600 dark:text-gray-300 mt-2 text-lg text-center">
+                    <div class="text-gray-600 mt-2 text-lg text-center">
                         <p>Pembuatan surat bebas lab sebagai syarat kelulusan</p>
                     </div>
                 </div>
@@ -36,10 +36,10 @@
                     <div class="mb-6">
                         <i class="fa-solid fa-vial text-4xl text-indigo-700"></i>
                     </div>
-                    <div class="text-gray-800 dark:text-white text-2xl font-semibold text-center">
+                    <div class="text-gray-800 text-2xl font-semibold text-center">
                         <h2>Pengujian Data Uji Sampel</h2>
                     </div>
-                    <div class="text-gray-600 dark:text-gray-300 mt-2 text-lg text-center">
+                    <div class="text-gray-600  mt-2 text-lg text-center">
                         <p>Jika ingin meminta layanan lab untuk melakukan pengujian sampel</p>
                     </div>
                 </div>

@@ -7,12 +7,12 @@
         <div>
             @auth
             <button onclick="window.location.href='http://localhost:8000/dashboard'"
-                class="dark:bg-white rounded sm:block md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-200 focus:text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                class=" rounded sm:block md:hidden text-gray-500 hover:text-gray-700  focus:text-gray-700  focus:outline-none focus:ring-2 focus:ring-gray-500">
                 Dashboard
             </button>
             @else
             <button onclick="window.location.href='http://localhost:8000/register'"
-                class="dark:bg-white rounded sm:block md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-200 focus:text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                class=" rounded sm:block md:hidden text-gray-500 hover:text-gray-700  focus:text-gray-700  focus:outline-none focus:ring-2 focus:ring-gray-500">
                 Daftar
             </button>
             @endauth
@@ -35,11 +35,11 @@
         @endauth
     </div>
 </nav>
-<div class="bg-gray-100 dark:bg-transparent">
+<div class="bg-gray-100 ">
     <div class="container mx-auto flex flex-col items-center py-12 sm:py-24">
         <div class="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col  mb-5 sm:mb-10">
             <h1
-                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-gray-800 dark:text-white font-black leading-7 md:leading-10">
+                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-gray-800 font-black leading-7 md:leading-10">
                 Selamat datang di website layanan lab terpadu <br>
                 <span class="text-indigo-700">Fakultas MIPA UNS</span>
             </h1>
