@@ -56,3 +56,7 @@
   - Menambah role guest
   - Validasi form register, jika tidak menggunakan domain student maka otomatis menjadi role guest
 
+## Senin, 20 Juni 2022
+#### Deny
+  - Penambahan create uji_sampel pada role guest
+
