@@ -7,7 +7,7 @@
             <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">Create your new
                 account</p>
             <p tabindex="0" class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500">Already have
-                an account? <a href="/masuk"
+                an account? <a href="/login"
                     class="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none  text-gray-800 cursor-pointer">
                     Sign in here</a></p>
 
