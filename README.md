@@ -60,3 +60,6 @@
 #### Deny
   - Penambahan create uji_sampel pada role guest
 
+## Rabu, 22 Juni 2022
+#### Deny
+  - Pembuatan logic penambahan data yang sama pada dua tabel

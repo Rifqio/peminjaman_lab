@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class UjiLabRequest extends FormRequest
 {
@@ -25,6 +26,7 @@ class UjiLabRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => 'required',
             'no_surat' => 'required',
             'no_pembayaran' => 'required',
             'nama_analisa' => 'required',
@@ -33,8 +35,6 @@ class UjiLabRequest extends FormRequest
             'tanggal_masuk' => 'required',
             'tanggal_selesai' => 'required',
             'catatan' => 'required',
-            'status_pembayaran' => 'required',
-
         ];
     }
 
@@ -42,9 +42,9 @@ class UjiLabRequest extends FormRequest
     public function prepareForValidation() {
         
         $this->merge([
+            'user_id' => Auth::user()->id,
             'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."03".rand(10, 99),
             'no_pembayaran' => "B".str_replace([':'], '', Carbon::now()->toTimeString())."03".rand(10, 99),
-            'status_pembayaran' => 1,
             'tanggal_masuk' => Carbon::now(),
             'tanggal_selesai' => Carbon::now()->addWeek(2),
 
