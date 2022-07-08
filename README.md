@@ -63,3 +63,8 @@
 ## Rabu, 22 Juni 2022
 #### Deny
   - Pembuatan logic penambahan data yang sama pada dua tabel
+
+
+## Jumat, 8 Juli 2022
+#### Deny
+  - Memperbaiki logic uji sampel

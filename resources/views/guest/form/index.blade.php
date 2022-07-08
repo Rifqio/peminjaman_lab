@@ -9,7 +9,7 @@
 
                         <div class="mt-10 px-7">
                             <p class="text-xl font-semibold leading-tight text-gray-800">Form Pengujian Data Sampel</p>
-                            <form action="{{ url('uji-sampel') }}" method="post">
+                            <form action="{{ route('uji-sampel-store') }}" method="post">
                                 @csrf
                                 <div class="grid w-full grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-7 mt-7 ">
                                     <div>
@@ -54,7 +54,7 @@
                                             <p class="text-red-500 font-semibold">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    
+
                                     <div>
                                         <p class="text-base font-medium leading-none text-gray-800 pb-4">Jenis Analisa</p>
                                         <div class="relative top-1">
@@ -83,7 +83,7 @@
 
                                 </div>
 
-                              
+
 
                         </div>
                         <hr class="h-[1px] bg-gray-100 my-14">
