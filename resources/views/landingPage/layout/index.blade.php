@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/3a7766bf6b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/fontawesome.js') }}"></script>
     <title>Welcome</title>
 </head>
 
 <body>
     @yield('content')
-<script>        
+<script>
 function toggleMenu(flag) {
     let value = document.getElementById("menu");
     if (flag) {

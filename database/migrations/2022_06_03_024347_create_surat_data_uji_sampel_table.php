@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('surat_data_uji_sampel', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_surat');
+            $table->foreignId('user_id');
+            $table->bigInteger('no_surat');
+            $table->string('no_pembayaran');
             $table->string('nama_analisa');
             $table->string('nama_sampel');
             $table->integer('jumlah_sampel');
             $table->date('tanggal_masuk');
             $table->date('tanggal_selesai');
             $table->string('catatan');
-            $table->foreignId('status_pembayaran')->constrained('status_pembayaran');
             $table->timestamps();
         });
     }

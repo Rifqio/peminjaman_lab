@@ -40,7 +40,7 @@
                         <input id="pass" name="password" type="password" required
                             class="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
                         <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
-                            <img onclick="show()" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg5.svg" alt="viewport">
+                            <img onclick="show2()" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg5.svg" alt="viewport">
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         <input id="pass_confirmation" type="password" name="password_confirmation" required
                             class="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
                         <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
-                            <img onclick="show2()" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg5.svg" alt="viewport">
+                            <img onclick="show()" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg5.svg" alt="viewport">
                         </div>
                     </div>
                 </div>

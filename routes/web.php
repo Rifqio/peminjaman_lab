@@ -7,6 +7,7 @@ use App\Http\Controllers\BebasLabController;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UjiSampelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,12 @@ Route::controller(PeminjamanController::class)->middleware(['auth', 'role:studen
     Route::post('/', 'store');
     Route::get('status', 'status_peminjaman');
     Route::get('cetak/{id}', 'generate_persetujuan');
+});
+
+//Route Uji Lab
+Route::controller(UjiSampelController::class)->middleware(['auth'])->prefix('uji-sampel')->group(function (){
+    Route::post('/', 'store')->name('uji-sampel-store');
+    Route::get("/checkout", 'checkout');
 });
 
 //Route Bebas Lab

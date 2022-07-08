@@ -1,6 +1,6 @@
 @extends('auth.layout.index')
 @section('container')
-<div class="h-full bg-gradient-to-tl from-blue-400 to-indigo-900 w-full py-16 px-4">
+<div class="min-h-screen bg-gradient-to-tl from-blue-400 to-indigo-900 w-full py-16 px-4">
     <div class="flex flex-col items-center justify-center">
         <img src="/img/logo-uns.png" class="w-44" alt="logo">
 
