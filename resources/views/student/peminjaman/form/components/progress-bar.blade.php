@@ -4,7 +4,7 @@
             <div class="sm:mb-0 mb-4 flex items-center">
                 <a tabindex="0"
                     class="focus:text-gray-500 hover:text-gray-500 focus:underline focus:outline-none cursor-pointer  text-xl pl-4 font-semibold leading-5 text-gray-800 dark:text-gray-100">
-                    {{ $data->keterangan }} </a>
+                    {{-- {{ $data->keterangan }} </a> --}}
             </div>
             <div class="sm:mb-0 mb-4 flex items-center">
                 <a tabindex="0"

@@ -26,7 +26,7 @@
                         <td class="">
                             <div class="flex items-center pl-5">
                                 <p class="text-base font-medium leading-none text-gray-700 mr-2">
-                                    {{ $data->keterangan }}</p>
+                                    {{-- {{ $data->keterangan }}</p> --}}
                             </div>
                         </td>
 
@@ -118,7 +118,7 @@
 
 
                                             <div class="modal-body">
-                                                @include('peminjaman.form.components.progress-bar')
+                                                @include('student.peminjaman.form.components.progress-bar')
                                             </div>
 
 

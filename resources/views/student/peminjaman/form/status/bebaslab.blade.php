@@ -108,7 +108,7 @@
 
 
                                             <div class="modal-body">
-                                                @include('peminjaman.form.components.progress-bar')
+                                                @include('student.peminjaman.form.components.progress-bar')
                                             </div>
 
 

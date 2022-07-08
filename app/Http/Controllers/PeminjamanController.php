@@ -39,7 +39,7 @@ class PeminjamanController extends Controller
             ->join("users", function ($join) {
                 $join->on("surat_peminjaman_lab.user_id", "=", "users.id");
             })
-            ->select("surat_peminjaman_lab.id", "surat_peminjaman_lab.no_surat", "surat_peminjaman_lab.keterangan", "ruang_lab.nama_ruang", "surat_peminjaman_lab.created_at", "surat_peminjaman_lab.updated_at", "surat_peminjaman_lab.status_id", "status_aktivasi.status", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
+            ->select("surat_peminjaman_lab.id", "surat_peminjaman_lab.no_surat", "surat_peminjaman_lab.tujuan_akses_id", "ruang_lab.nama_ruang", "surat_peminjaman_lab.created_at", "surat_peminjaman_lab.updated_at", "surat_peminjaman_lab.status_id", "status_aktivasi.status", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
             ->where("users.id", "=", Auth::id())
             ->orderBy("surat_peminjaman_lab.tanggal_awal_peminjaman", 'desc')
             ->get();
