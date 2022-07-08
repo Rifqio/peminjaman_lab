@@ -8,6 +8,7 @@ use App\Models\Pembayaran;
 use App\Models\UjiSampel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UjiSampelController extends Controller
 {
@@ -24,11 +25,8 @@ class UjiSampelController extends Controller
 
         Pembayaran::create($bayar);
 
-        return redirect('/uji-sampel/checkout')->with('success', 'Form telah berhasil dibuat, silahkan melakukan pembayaran.');
+        return redirect('/dashboard')->with('success', 'Form telah berhasil dibuat, silahkan cek status pembayaran anda di halaman status.');
     }
 
-    public function checkout()
-    {
-        return view('guest.checkout');
-    }
+   
 }

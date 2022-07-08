@@ -68,3 +68,4 @@
 ## Jumat, 8 Juli 2022
 #### Deny
   - Memperbaiki logic uji sampel
+  - Menambah status view untuk uji sampel guest

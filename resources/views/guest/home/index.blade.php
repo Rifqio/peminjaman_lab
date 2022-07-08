@@ -12,7 +12,7 @@
                         class="mb-3 w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer text-indigo-700">
                         <i class="fa-solid fa-vial text-4xl"></i>
                     </div>
-                    <a href="/guest/pengujian-sampel" tabindex="0" class="focus:outline-none mt-2 text-xs sm:text-sm md:text-xl font-semibold text-center text-indigo-600">Pengujian Data Sampel</a>
+                    <a href="/guest/menu-pengujian-sampel" tabindex="0" class="focus:outline-none mt-2 text-xs sm:text-sm md:text-xl font-semibold text-center text-indigo-600">Pengujian Data Sampel</a>
                 </div>
             </div>
             <div class="flex items-center mt-7">

@@ -47,7 +47,6 @@ Route::controller(PeminjamanController::class)->middleware(['auth', 'role:studen
 //Route Uji Lab
 Route::controller(UjiSampelController::class)->middleware(['auth'])->prefix('uji-sampel')->group(function (){
     Route::post('/', 'store')->name('uji-sampel-store');
-    Route::get("/checkout", 'checkout');
 });
 
 //Route Bebas Lab
