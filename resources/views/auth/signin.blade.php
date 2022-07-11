@@ -8,7 +8,7 @@
             <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">Login to your
                 account</p>
             <p tabindex="0" class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500">Dont have
-                account? <a href="javascript:void(0)"
+                account? <a href="/register"
                     class="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none  text-gray-800 cursor-pointer">
                     Sign up here</a></p>
 

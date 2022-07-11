@@ -10,11 +10,7 @@
 
     <script src="{{ asset('js/fontawesome.js') }}"></script>
     <script src="{{ asset('js/jquery.js')}}"></script>
-    <script>
-        $(document).ready(function(){
-            $("#exampleModal").modal('show');
-        });
-    </script>
+ 
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>

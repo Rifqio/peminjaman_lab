@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('tanggal_masuk');
             $table->date('tanggal_selesai');
             $table->string('catatan');
+            // $table->foreignId('pembayaran_id')->constrained('pembayaran');
             $table->timestamps();
         });
     }

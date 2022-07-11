@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\UjiSampel;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ class UjiLabRequest extends FormRequest
             'no_pembayaran' => 'required',
             'nama_analisa' => 'required',
             'nama_sampel' => 'required',
-            'jumlah_sampel' => 'required',
+            'jumlah_sampel' => 'required|integer',
             'tanggal_masuk' => 'required',
             'tanggal_selesai' => 'required',
             'catatan' => 'required',
@@ -40,14 +41,21 @@ class UjiLabRequest extends FormRequest
 
     //Pengisian no_surat dan status_pembayaran
     public function prepareForValidation() {
-        
+
         $this->merge([
             'user_id' => Auth::user()->id,
             'no_surat' => str_replace('-', '', Carbon::now()->toDateString())."03".rand(10, 99),
             'no_pembayaran' => "B".str_replace([':'], '', Carbon::now()->toTimeString())."03".rand(10, 99),
             'tanggal_masuk' => Carbon::now(),
             'tanggal_selesai' => Carbon::now()->addWeek(2),
-
+            // 'pembayaran_id' => UjiSampel::latest()->first()->id
         ]);
+    }
+
+    public function messages()
+    {
+        return [
+            'jumlah_sampel.integer' => "Jumlah sampel harus merupakan angka"
+        ];
     }
 }

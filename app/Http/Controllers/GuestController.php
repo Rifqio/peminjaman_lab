@@ -21,14 +21,10 @@ class GuestController extends Controller
 
     public function status()
     {
-        $relation = DB::table("pembayarans")
-        ->Join("status_pembayaran", function($join){
-            $join->on("pembayarans.status_pembayaran", "=", "status_pembayaran.id");
-        })
-        ->Join("surat_data_uji_sampel", function($join){
-            $join->on("surat_data_uji_sampel.id", "=", "pembayarans.uji_sampel_id");
-        })
-        ->select("surat_data_uji_sampel.no_surat", "surat_data_uji_sampel.no_pembayaran", "surat_data_uji_sampel.nama_sampel", "status_pembayaran.status", "surat_data_uji_sampel.tanggal_masuk", "surat_data_uji_sampel.tanggal_selesai")
+        $relation = DB::table("pembayaran")
+        ->join("status_pembayaran", "pembayaran.status_pembayaran", "=", "status_pembayaran.id")
+        ->join("surat_data_uji_sampel", "surat_data_uji_sampel.id", "=", "pembayaran.uji_sampel_id")
+        ->select("surat_data_uji_sampel.id","surat_data_uji_sampel.no_surat", "surat_data_uji_sampel.no_pembayaran", "surat_data_uji_sampel.nama_sampel", "status_pembayaran.status", "surat_data_uji_sampel.tanggal_masuk", "surat_data_uji_sampel.tanggal_selesai")
         ->where("surat_data_uji_sampel.user_id", "=", Auth::user()->id)
         ->get();
 

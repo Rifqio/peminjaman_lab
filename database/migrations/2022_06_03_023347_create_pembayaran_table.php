@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pembayarans', function (Blueprint $table) {
+        Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('uji_sampel_id');
             $table->string('kode_bayar');
             $table->foreignId('status_pembayaran')->constrained('status_pembayaran');
+            $table->text('url_bukti_pembayaran')->nullable();
             $table->timestamps();
         });
     }

@@ -69,3 +69,7 @@
 #### Deny
   - Memperbaiki logic uji sampel
   - Menambah status view untuk uji sampel guest
+
+## Senin, 11 Juli 2022
+#### Rio
+  - Menambah upload bukti bayar

@@ -43,7 +43,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/admin.php'));
             // Guest Route
             Route::middleware(['web','auth', 'role:guest'])
-                ->controller(GuestController::class)
                 ->group(base_path('routes/guest.php'));
         });
     }
