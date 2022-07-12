@@ -92,12 +92,12 @@
                                         {{-- Modal --}}
                                         <div class="modal fade" id="exampleModal{{ $data->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <form action="{{ route('upload-bukti') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="fileUploadForm" action="{{ route('upload-bukti') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Status Pemesanan
+                                                            <h5 class="modal-title" id="exampleModalLabel">Status Pembayaran
                                                             </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -113,17 +113,26 @@
                                                                 </p>
                                                             </div>
                                                             <div class="bg-gray-200 w-[220px] h-0.5 m-auto"></div>
-                                                            <div class="text-justify mt-4">
+                                                            <div class="text-justify mt-4 mb-4">
                                                                 <p class="capitalize mb-2">Silahkan upload bukti pembayaran anda
                                                                     disini</p>
                                                                 <input type="file" name="bukti_pembayaran">
                                                                 <input type="hidden" name="pembayaran_id" value="{{ $data->id }}">
+                                                                <div class="progress mt-2">
+                                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                                                                </div>
                                                             </div>
+                                                            @if ( $data->url_bukti_pembayaran )
+                                                            <button class="bg-green-500 py-2 w-full text-white font-semibold text-md rounded-sm hover:bg-green-800">
+                                                                <a href="/storage/{{ $data->url_bukti_pembayaran }}" target="_blank" class="hover:text-white" > Sudah diunggah, Lihat dokumen </a>
+                                                            </button>
+                                                            <input type="hidden" name="old_image" value="{{ $data->url_bukti_pembayaran }}">
+                                                            @endif
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
+                                                            <button type="submit" class="bg-blue-600 hover:shadow-xl  px-6 py-2 rounded-md text-white font-semibold">Submit</button>
+                                                            <button type="button" class="btn btn-outline-secondary"
                                                                 data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -157,5 +166,23 @@
             }
             list.classList.toggle("hidden");
         }
+        $(function () {
+            $(document).ready(function () {
+                $('#fileUploadForm').ajaxForm({
+                    beforeSend: function () {
+                        var percentage = '0';
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentage = percentComplete;
+                        $('.progress .progress-bar').css("width", percentage+'%', function() {
+                          return $(this).attr("aria-valuenow", percentage) + "%";
+                        })
+                    },
+                    complete: function (xhr) {
+                        location.reload(true);
+                    }
+                });
+            });
+        });
     </script>
 @endsection

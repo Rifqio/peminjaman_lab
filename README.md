@@ -73,3 +73,7 @@
 ## Senin, 11 Juli 2022
 #### Rio
   - Menambah upload bukti bayar
+
+## Selasa, 12 Juli 2022
+#### Rio
+  - Menambah preview bukti pembayaran

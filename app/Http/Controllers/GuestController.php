@@ -24,7 +24,7 @@ class GuestController extends Controller
         $relation = DB::table("pembayaran")
         ->join("status_pembayaran", "pembayaran.status_pembayaran", "=", "status_pembayaran.id")
         ->join("surat_data_uji_sampel", "surat_data_uji_sampel.id", "=", "pembayaran.uji_sampel_id")
-        ->select("surat_data_uji_sampel.id","surat_data_uji_sampel.no_surat", "surat_data_uji_sampel.no_pembayaran", "surat_data_uji_sampel.nama_sampel", "status_pembayaran.status", "surat_data_uji_sampel.tanggal_masuk", "surat_data_uji_sampel.tanggal_selesai")
+        ->select("pembayaran.url_bukti_pembayaran","surat_data_uji_sampel.id","surat_data_uji_sampel.no_surat", "surat_data_uji_sampel.no_pembayaran", "surat_data_uji_sampel.nama_sampel", "status_pembayaran.status", "surat_data_uji_sampel.tanggal_masuk", "surat_data_uji_sampel.tanggal_selesai")
         ->where("surat_data_uji_sampel.user_id", "=", Auth::user()->id)
         ->get();
 
