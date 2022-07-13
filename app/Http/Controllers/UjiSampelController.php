@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PembayaranRequest;
 use App\Http\Requests\UjiLabRequest;
+use App\Http\Requests\UjiSampelRequest;
 use App\Models\Pembayaran;
 use App\Models\UjiSampel;
 use Illuminate\Http\Request;
@@ -30,17 +31,21 @@ class UjiSampelController extends Controller
         return redirect('/dashboard')->with('success', 'Form telah berhasil dibuat, silahkan cek status pembayaran anda di halaman status.');
     }
 
-    public function bukti_pembayaran(Request $request)
+    public function bukti_pembayaran(UjiSampelRequest $request)
     {
+
+  
         if ($request->old_image) {
             Storage::delete($request->old_image);
         }
+
         
         Pembayaran::where('id', request('pembayaran_id'))
             ->update([
                 'url_bukti_pembayaran' => $request->file('bukti_pembayaran')->store('bukti_pembayaran'),
                 'status_pembayaran' => 2
         ]);
+
 
         return redirect('dashboard');
     }

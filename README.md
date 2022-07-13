@@ -77,3 +77,8 @@
 ## Selasa, 12 Juli 2022
 #### Rio
   - Menambah preview bukti pembayaran
+
+## Rabu, 13 Juli 2022
+#### Deny
+  - Validation upload bukti pembayaran
+  
