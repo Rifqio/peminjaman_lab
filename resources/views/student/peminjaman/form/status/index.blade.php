@@ -10,6 +10,7 @@
                 Daftar Status Peminjaman</p>
 
         </div>
+        
     </div>
     <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
 
@@ -110,18 +111,12 @@
                                     <div class="modal-dialog modal-xl">
                                         <div class="modal-content">
                                             <div class="modal-header">
-
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-
-
-
                                             <div class="modal-body">
                                                 @include('student.peminjaman.form.components.progress-bar')
                                             </div>
-
-
                                             <div class="modal-footer">
                                                 <button type="button"
                                                     class="px-4 py-2 text-red-500 bg-red-200 rounded hover:bg-red-50"

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flowbite.min.css') }}" />
-
+    <script src="{{ asset('js/app.js')}}"></script>
+    <script src="{{ asset('js/tailwind.js')}}"></script>
     <script src="{{ asset('js/fontawesome.js') }}"></script>
     <script src="{{ asset('js/jquery.js')}}"></script>
     <script>

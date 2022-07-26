@@ -30,19 +30,14 @@ class PeminjamanController extends Controller
     {
         $data =
             DB::table("surat_peminjaman_lab")
-            ->join("status_aktivasi", function ($join) {
-                $join->on("surat_peminjaman_lab.status_id", "=", "status_aktivasi.id");
-            })
-            ->join("ruang_lab", function ($join) {
-                $join->on("surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id");
-            })
-            ->join("users", function ($join) {
-                $join->on("surat_peminjaman_lab.user_id", "=", "users.id");
-            })
+            ->join("status_aktivasi","surat_peminjaman_lab.status_id", "=", "status_aktivasi.id")
+            ->join("ruang_lab", "surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id")
+            ->join("users", "surat_peminjaman_lab.user_id", "=", "users.id")
             ->select("surat_peminjaman_lab.id", "surat_peminjaman_lab.no_surat", "surat_peminjaman_lab.tujuan_akses_id", "ruang_lab.nama_ruang", "surat_peminjaman_lab.created_at", "surat_peminjaman_lab.updated_at", "surat_peminjaman_lab.status_id", "status_aktivasi.status", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
             ->where("users.id", "=", Auth::id())
             ->orderBy("surat_peminjaman_lab.tanggal_awal_peminjaman", 'desc')
             ->get();
+        // dd($data);
         return view('student.peminjaman.form.status.index', [
             'data' => $data,
             // 'pemin>onjaman' => $peminjaman,
