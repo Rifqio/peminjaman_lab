@@ -47,7 +47,7 @@
                         class="mb-3 w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer text-indigo-700">
                         <i class="fa-solid fa-vial text-4xl"></i>
                     </div>
-                    <a tabindex="0"
+                    <a tabindex="0" href="/uji-sampel"
                         class="cursor-pointer  focus:opacity-75 focus:underline hover:opacity-75  focus:outline-none text-gray-800 dark:text-gray-100 text-xl tracking-normal text-center font-medium mb-1">Pengujian
                         Data Sampel</a>
                     <p
@@ -62,9 +62,9 @@
     </div>
 </div>
 @if (session()->has('success'))
-    <x-alert-badge :message="session('success')" />
+<x-alert-badge :message="session('success')" />
 @elseif (session()->has('warning'))
-    <x-danger-toast :message="session('warning')" />
+<x-danger-toast :message="session('warning')" />
 @endif
 
 @endsection

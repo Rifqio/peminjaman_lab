@@ -1,9 +1,7 @@
 @extends('guest.layouts.layout')
 
 @section('container')
-
-    @include('guest.form.syarat-guest')
-
+    @include('student.ujiSampel.form.syarat-student')
     <div class="px-2 ">
         <div class="flex flex-no-wrap items-start">
             <div class="w-full m-auto ">
@@ -21,11 +19,28 @@
                                             class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
                                             disabled value="{{ Auth::user()->name }}">
                                     </div>
+
                                     <div>
                                         <p class="text-base font-medium leading-none text-gray-800">Email</p>
                                         <input
                                             class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
                                             disabled value="{{ Auth::user()->email }}">
+                                    </div>
+
+                                    <div>
+                                        <p class="text-base font-medium leading-none text-gray-800">NIM</p>
+                                        <input
+                                            class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
+                                            disabled value="{{ Auth::user()->mahasiswa->nim }}">
+                                    </div>
+
+                                    <div>
+                                        <p class="text-base font-medium leading-none text-gray-800">Prodi</p>
+                                        @foreach ($prodi as $prod)
+                                        <input
+                                            class="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50"
+                                            disabled value="{{ $prod->nama_prodi }}">
+                                        @endforeach
                                     </div>
 
                                     <div>
@@ -110,8 +125,8 @@
 
     </div>
     <script>
-        $(document).ready(function(){
-            $("#syarat").modal('show');
-        });
+        // $(document).ready(function(){
+        //     $("#syarat").modal('show');
+        // });
     </script>
 @endsection

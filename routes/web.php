@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BebasLabController;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\UjiSampelController;
 
@@ -47,6 +48,9 @@ Route::controller(PeminjamanController::class)->middleware(['auth', 'role:studen
 //Route Uji Lab
 Route::controller(UjiSampelController::class)->middleware(['auth'])->prefix('uji-sampel')->group(function (){
     Route::post('/', 'store')->name('uji-sampel-store');
+    Route::get('/', 'index');
+    Route::get('create', 'create');
+    Route::get('status', 'status');
 });
 
 //Route Bebas Lab

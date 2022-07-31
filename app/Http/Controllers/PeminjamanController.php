@@ -48,12 +48,8 @@ class PeminjamanController extends Controller
     {
         $prodi =
             DB::table("users")
-            ->join("user_mahasiswa", function ($join) {
-                $join->on("users.id", "=", "user_mahasiswa.user_id");
-            })
-            ->join("prodi", function ($join) {
-                $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
-            })
+            ->join("user_mahasiswa", "users.id", "=", "user_mahasiswa.user_id")
+            ->join("prodi", "user_mahasiswa.prodi_id", "=", "prodi.id")
             ->where("users.id", "=", Auth::id())
             ->get();
         $ruangan = Room::all();

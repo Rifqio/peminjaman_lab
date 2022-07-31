@@ -81,4 +81,8 @@
 ## Rabu, 13 Juli 2022
 #### Deny
   - Validation upload bukti pembayaran
-  
+
+## Minggu, 31 Juli 2022
+#### Rio
+  - Uji sampel student
+
