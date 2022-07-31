@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Guest;
 use App\Models\Mahasiswa;
 use App\Models\Peminjaman;
 use Laravel\Sanctum\HasApiTokens;
@@ -24,6 +25,11 @@ class User extends Authenticatable //implements MustVerifyEmail
     public function mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class);
+    }
+
+    public function guest()
+    {
+        return $this->hasOne(Guest::class);
     }
 
     /**
