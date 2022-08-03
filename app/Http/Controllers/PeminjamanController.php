@@ -90,7 +90,7 @@ class PeminjamanController extends Controller
             ->join("prodi", function ($join) {
                 $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
             })
-            ->select("users.name", "user_mahasiswa.nim", "users.email", "prodi.nama_prodi", "user_mahasiswa.alamat", "user_mahasiswa.phone", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.judul_penelitian", "ruang_lab.nama_ruang", "surat_peminjaman_lab.no_surat")
+            ->select("users.name", "user_mahasiswa.nim", "users.email", "prodi.nama_prodi", "user_mahasiswa.alamat", "user_mahasiswa.phone", "surat_peminjaman_lab.tujuan_akses_id", "surat_peminjaman_lab.judul_penelitian", "ruang_lab.nama_ruang", "surat_peminjaman_lab.no_surat")
             ->where("users.id", "=", Auth::id())
             ->where("surat_peminjaman_lab.id", "=", $id)
             ->get();
@@ -111,7 +111,7 @@ class PeminjamanController extends Controller
             ->join("prodi", function ($join) {
                 $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
             })
-            ->select("users.name", "surat_peminjaman_lab.no_surat", "user_mahasiswa.nim", "prodi.nama_prodi", "surat_peminjaman_lab.judul_penelitian", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.sumber_dana", "surat_peminjaman_lab.pembimbing", "user_mahasiswa.phone", "users.email", "user_mahasiswa.alamat", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
+            ->select("users.name", "surat_peminjaman_lab.no_surat", "user_mahasiswa.nim", "prodi.nama_prodi", "surat_peminjaman_lab.judul_penelitian", "surat_peminjaman_lab.tujuan_akses_id", "surat_peminjaman_lab.sumber_dana", "surat_peminjaman_lab.pembimbing", "user_mahasiswa.phone", "users.email", "user_mahasiswa.alamat", "surat_peminjaman_lab.tanggal_awal_peminjaman", "surat_peminjaman_lab.tanggal_akhir_peminjaman")
             ->where("users.id", "=", Auth::id())
             ->where("surat_peminjaman_lab.id", "=", $id)
             ->get();

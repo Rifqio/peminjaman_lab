@@ -98,7 +98,7 @@
             Telepon HP <span id="hp">:</span> {{ $d->phone }}
         </p>
 
-        <p>Dalam rangka penelitian: <span class="bold"> {{ $d->keterangan }}</span> dengan judul: <br>
+        <p>Dalam rangka penelitian: <span class="bold"> {{ $d->tujuan_akses_id }}</span> dengan judul: <br>
             <span class="bold">{{ $d->judul_penelitian }}</span> <br>
             Mohon untuk dapat diijinkan untuk menggunakan fasilitas laboratorium di lingkungan Fakultas MIPA
             sebagai berikut: <br>

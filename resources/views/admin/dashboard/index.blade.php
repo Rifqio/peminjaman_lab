@@ -10,6 +10,7 @@
         @endif
         <h1>Selamat Datang, {{ auth()->user()->name }}</h1>
         <button><a href="daftar-peminjam">Cek Daftar Peminjam</a></button>
+        <button> <a href="daftar-uji">Cek Daftar Uji Sampel</a></button>
     </div>
 </div>
 

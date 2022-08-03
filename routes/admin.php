@@ -9,4 +9,11 @@ Route::prefix('daftar-peminjam')->group(function () {
     Route::get('cetak/{id}', 'cekPermohonan');
 });
 
+Route::prefix('daftar-uji')->group(function () {
+    Route::get('/', 'daftar_peminjam');
+    Route::put('update', 'approve');
+    Route::put('tolak', 'disapprove');
+    Route::get('cetak/{id}', 'cekPermohonan');
+});
+
 

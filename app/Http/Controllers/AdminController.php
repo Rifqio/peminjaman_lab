@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
+    /**
+     *
+     * Daftar Peminjaman Lab
+     *
+     */
+
     public function daftar_peminjam()
     {
         $peminjam = DB::table("surat_peminjaman_lab")
@@ -20,7 +26,7 @@ class AdminController extends Controller
             ->join("ruang_lab", function ($join) {
                 $join->on("surat_peminjaman_lab.ruang_lab_id", "=", "ruang_lab.id");
             })
-            ->select("ruang_lab.nama_ruang", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.tanggal_awal_peminjaman", "users.name", "users.email", "surat_peminjaman_lab.id")
+            ->select("ruang_lab.nama_ruang", "surat_peminjaman_lab.tujuan_akses_id", "surat_peminjaman_lab.tanggal_awal_peminjaman", "users.name", "users.email", "surat_peminjaman_lab.id")
             ->orderBy("surat_peminjaman_lab.tanggal_awal_peminjaman", 'desc')
             ->where("surat_peminjaman_lab.status_id", "=", 1)
             ->get();
@@ -66,12 +72,28 @@ class AdminController extends Controller
         ->join("prodi", function ($join) {
             $join->on("user_mahasiswa.prodi_id", "=", "prodi.id");
         })
-        ->select("users.name", "user_mahasiswa.nim", "users.email", "prodi.nama_prodi", "user_mahasiswa.alamat", "user_mahasiswa.phone", "surat_peminjaman_lab.keterangan", "surat_peminjaman_lab.judul_penelitian", "ruang_lab.nama_ruang", "surat_peminjaman_lab.no_surat")
+        ->select("users.name", "user_mahasiswa.nim", "users.email", "prodi.nama_prodi", "user_mahasiswa.alamat", "user_mahasiswa.phone", "surat_peminjaman_lab.tujuan_akses_id", "surat_peminjaman_lab.judul_penelitian", "ruang_lab.nama_ruang", "surat_peminjaman_lab.no_surat")
         ->where("surat_peminjaman_lab.id", "=", $id)
         ->get();
 
-    $pdf = PDF::loadView('peminjaman.form.cetak.permohonan', ['data' => $data]);
+    $pdf = PDF::loadView('student.peminjaman.form.cetak.permohonan', ['data' => $data]);
     return $pdf->stream();
+    }
+
+    /**
+     *
+     * Daftar Uji Lab
+     *
+     */
+    public function daftar_uji()
+    {
+        $relation = DB::table("pembayaran")
+        ->join("status_pembayaran", "pembayaran.status_pembayaran", "=", "status_pembayaran.id")
+        ->join("surat_data_uji_sampel", "surat_data_uji_sampel.id", "=", "pembayaran.uji_sampel_id")
+        ->select("pembayaran.url_bukti_pembayaran","surat_data_uji_sampel.id","surat_data_uji_sampel.no_surat", "surat_data_uji_sampel.no_pembayaran", "surat_data_uji_sampel.nama_sampel", "status_pembayaran.status", "surat_data_uji_sampel.tanggal_masuk", "surat_data_uji_sampel.tanggal_selesai")
+        ->where("surat_data_uji_sampel.user_id", "=", Auth::user()->id)
+        ->get();
+        return view('admin.dashboard.daftar-uji');
     }
 
 }

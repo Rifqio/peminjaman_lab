@@ -37,7 +37,7 @@
                                 </div>
                             </td>
                             <td class="pl-12">
-                                <p class="text-sm font-medium leading-none text-gray-800 ">{{ $data->keterangan }}</p>
+                                <p class="text-sm font-medium leading-none text-gray-800 ">{{ $data->tujuan_akses_id }}</p>
                             </td>
                             <td class="pl-12">
                                 <p class="font-medium">
